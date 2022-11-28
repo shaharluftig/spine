@@ -2,10 +2,12 @@ from typing import List
 
 import networkx as nx
 
+from executor.contract.IWorkflow import IWorkflow
 from libs.IStep import IStep
 
 
-class Workflow:
+class DagWorkflow(IWorkflow):
+
     def __init__(self):
         self.graph = nx.DiGraph()
 
@@ -22,6 +24,5 @@ class Workflow:
     def _get_leaf_nodes(self):
         return [node for node in self.graph.nodes() if self.graph.out_degree(node) == 0]
 
-    # def temp_draw(self):
-    #     nx.draw(self.graph, with_labels=True)
-    #     plt.show()
+    def to_list(self):
+        return list(nx.algorithms.topological_sort(self.graph))

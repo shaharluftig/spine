@@ -2,7 +2,7 @@ import uuid
 
 from pyspark.sql import SparkSession
 
-from executor.common.context.IContext import IContext
+from executor.contract.IContext import IContext
 
 
 class CardoContext(IContext):
