@@ -1,9 +1,10 @@
 from typing import List
 
 import networkx as nx
+from matplotlib import pyplot as plt
 
-from executor.contract.IWorkflow import IWorkflow
-from libs.IStep import IStep
+from src.executor.workflows.IWorkflow import IWorkflow
+from src.libs.IStep import IStep
 
 
 class DagWorkflow(IWorkflow):
@@ -26,3 +27,16 @@ class DagWorkflow(IWorkflow):
 
     def to_list(self):
         return list(nx.algorithms.topological_sort(self.graph))
+
+    def get_before(self, step: IStep = None):
+        if step is None:
+            return self._get_leaf_nodes()
+        else:
+            return list(self.graph.predecessors(step))
+
+    def show_graph(self):
+        nx.draw_networkx(self.graph,
+                         bbox=dict(facecolor="skyblue",
+                                   boxstyle="round", ec="silver", pad=0.3),
+                         edge_color="gray")
+        plt.show()

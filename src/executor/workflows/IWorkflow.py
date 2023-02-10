@@ -1,6 +1,6 @@
 from typing import List
 
-from libs.IStep import IStep
+from src.libs.IStep import IStep
 
 
 class IWorkflow:
@@ -12,4 +12,7 @@ class IWorkflow:
         raise NotImplementedError()
 
     def to_list(self):
+        raise NotImplementedError()
+
+    def get_before(self, step=None):
         raise NotImplementedError()
