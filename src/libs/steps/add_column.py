@@ -4,5 +4,5 @@ from src.libs.IStep import IStep
 
 
 class AddColumn(IStep):
-    def process(self, cardo_context: CardoContext, df: CardoDataFrame) -> CardoDataFrame:
-        return df
+    def process(self, cardo_context: CardoContext, cardo_dataframe: CardoDataFrame) -> CardoDataFrame:
+        return cardo_dataframe
