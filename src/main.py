@@ -1,29 +1,25 @@
 from src.executor.common.context.implementations.cardo_context import CardoContext
-from src.executor.executors.implementations.async_executor import AsyncExecutor
+from src.executor.executors.implementations.workflow_executor import WorkflowExecutor
 from src.executor.workflows.implementations.dag_workflow import DagWorkflow
-
-from src.libs.steps.AddColumn import AddColumn
-from src.libs.steps.HiveReader import HiveReader
-from src.libs.steps.HiveWriter import HiveWriter
+from src.libs.steps.add_column import AddColumn
+from src.libs.steps.console_output import ConsoleOutput
+from src.libs.steps.csv_reader import CsvReader
 
 
 def __setup_steps():
-    hive_writer = HiveWriter()
-    hive_writer2 = HiveWriter()
-    hive_reader = HiveReader()
+    csv_reader = CsvReader("src/resources/rent.csv", has_headers=True)
     add_column = AddColumn()
-    add_column2 = AddColumn()
-    return hive_reader, add_column, add_column2, hive_writer, hive_writer2
+    console_output = ConsoleOutput()
+
+    return csv_reader, add_column, console_output
 
 
 def workflow_factory():
     workflow = DagWorkflow()
-    hive_reader, add_column, add_column2, hive_writer, hive_writer2 = __setup_steps()
-    workflow.add_last(hive_reader)
-    workflow.add_after([hive_writer], hive_reader)
-    workflow.add_after([add_column], hive_reader)
-    workflow.add_after([add_column2], add_column)
-    workflow.add_after([hive_writer2], add_column2)
+    csv_reader, add_column, console_output = __setup_steps()
+    workflow.add_last(csv_reader)
+    workflow.add_last(add_column)
+    workflow.add_last(console_output)
     return workflow
 
 
@@ -31,8 +27,7 @@ def main():
     ctx = CardoContext().get_context()
     workflow = workflow_factory()
     workflow.show_graph()
-    # AsyncExecutor().execute(workflow, ctx)
-
+    WorkflowExecutor().execute(workflow, ctx)
 
 
 if __name__ == '__main__':
