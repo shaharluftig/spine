@@ -1,5 +1,5 @@
-from src.executor.common.context.IContext import IContext
-from src.executor.workflows.Workflow import Workflow
+from src.core.common.context.IContext import IContext
+from src.core.workflows.Workflow import Workflow
 
 
 class IExecutor:

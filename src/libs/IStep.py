@@ -1,12 +1,9 @@
-from typing import Union
-
-from pyspark.sql import DataFrame as SparkDataFrame
-
-from src.executor.common.context.implementations.cardo_context import CardoContext
+from src.core.common.context.implementations.cardo_context import CardoContext
+from src.core.dataframe.cardo_dataframe import CardoDataFrame
 
 
 class IStep:
-    def process(self, cardo_context: CardoContext, df: Union[SparkDataFrame, None]) -> SparkDataFrame:
+    def process(self, cardo_context: CardoContext, *df: CardoDataFrame) -> CardoDataFrame:
         raise NotImplementedError
 
     def __repr__(self):

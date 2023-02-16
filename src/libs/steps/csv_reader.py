@@ -1,7 +1,7 @@
 import polars as pl
 
-from src.executor.common.context.implementations.cardo_context import CardoContext
-from src.executor.dataframe.cardo_dataframe import CardoDataFrame
+from src.core.common.context.implementations.cardo_context import CardoContext
+from src.core.dataframe.cardo_dataframe import CardoDataFrame
 from src.libs.IStep import IStep
 
 

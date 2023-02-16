@@ -1,6 +1,6 @@
-from src.executor.common.context.implementations.cardo_context import CardoContext
-from src.executor.executors.IExecutor import IExecutor
-from src.executor.workflows.Workflow import Workflow
+from src.core.common.context.implementations.cardo_context import CardoContext
+from src.core.executors.IExecutor import IExecutor
+from src.core.workflows.Workflow import Workflow
 
 
 class WorkflowExecutor(IExecutor):
