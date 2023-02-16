@@ -11,9 +11,10 @@ class DagWorkflow(Workflow):
     def __init__(self):
         super().__init__(nx.DiGraph())
 
-    def add_after(self, next_steps: List[IStep], prev_step: IStep):
+    def add_after(self, next_steps: List[IStep], prev_step: List[IStep]):
         self.graph.add_nodes_from(next_steps)
-        self.graph.add_edges_from([(prev_step, next_step) for next_step in next_steps])
+        for next_step in next_steps:
+            self.graph.add_edges_from([(prev_step, next_step) for prev_step in prev_step])
 
     def add_last(self, *next_steps: IStep):
         leaf_nodes = self._get_leaf_nodes()

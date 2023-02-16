@@ -1,7 +1,7 @@
 import polars as pl
 
 from src.core.common.context.implementations.cardo_context import CardoContext
-from src.core.dataframe.cardo_dataframe import CardoDataFrame
+from src.core.helpers.dataframe import DataFrame
 from src.libs.IStep import IStep
 
 
@@ -10,6 +10,6 @@ class CsvReader(IStep):
         self.headers = has_headers
         self.path = path
 
-    def process(self, cardo_context: CardoContext, df: CardoDataFrame = None) -> CardoDataFrame:
+    def process(self, cardo_context: CardoContext, df: DataFrame = None) -> DataFrame:
         df = pl.read_csv(self.path, has_header=self.headers)
-        return CardoDataFrame(df=df)
+        return df
