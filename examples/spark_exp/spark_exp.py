@@ -3,8 +3,8 @@ from pyspark.sql import SparkSession
 from core.src.common.context.implementations.cardo_context import CardoContext
 from core.src.executors.implementations.workflow_executor import WorkflowExecutor
 from core.src.workflows.implementations.dag_workflow import DagWorkflow
-from libs.src.steps.io.console_writer import ConsoleWriter
-from libs.src.steps.io.csv_reader import CsvReader
+from libs.src.steps.spark.io.console_writer import ConsoleWriter
+from libs.src.steps.spark.io.csv_reader import CsvReader
 
 
 def __setup_steps():

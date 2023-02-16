@@ -12,7 +12,7 @@ class CardoContext(IContext, metaclass=Singleton):
         self.logger = CardoLogger().get_logger()
         self.run_id = str(uuid.uuid1()).lower()
         if spark_session:
-            self.spark_session = spark_session
+            self.spark = spark_session
 
     def get_context(self):
         self.logger.info("Starting cardo context")
