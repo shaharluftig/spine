@@ -1,8 +1,9 @@
-from src.core.common.context.implementations.cardo_context import CardoContext
-from src.core.executors.IExecutor import IExecutor
-from src.core.workflows.Workflow import Workflow
+from core.src.common.context.implementations.cardo_context import CardoContext
+from core.src.executors.IExecutor import IExecutor
+from core.src.workflows.Workflow import Workflow
 
 
+# TODO: Make Async Executor
 class WorkflowExecutor(IExecutor):
     def __init__(self, ctx: CardoContext):
         self.ctx = ctx

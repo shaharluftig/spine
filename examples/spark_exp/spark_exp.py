@@ -1,3 +1,5 @@
+from pyspark.sql import SparkSession
+
 from core.src.common.context.implementations.cardo_context import CardoContext
 from core.src.executors.implementations.workflow_executor import WorkflowExecutor
 from core.src.workflows.implementations.dag_workflow import DagWorkflow
@@ -6,8 +8,8 @@ from libs.src.steps.io.csv_reader import CsvReader
 
 
 def __setup_steps():
-    rent_reader = CsvReader("../spark_exp/resources/rent.csv", has_headers=True)
-    names_reader = CsvReader("../spark_exp/resources/names.csv", has_headers=True)
+    rent_reader = CsvReader("./resources/rent.csv", has_headers=True)
+    names_reader = CsvReader("./resources/names.csv", has_headers=True)
     console_output = ConsoleWriter()
     return rent_reader, names_reader, console_output
 
@@ -22,7 +24,8 @@ def workflow_factory():
 
 
 def main():
-    ctx = CardoContext().get_context()
+    spark = SparkSession.builder.master("local").getOrCreate()
+    ctx = CardoContext(spark_session=spark).get_context()
     workflow = workflow_factory()
     WorkflowExecutor(ctx).execute(workflow)
 

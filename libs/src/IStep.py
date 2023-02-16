@@ -1,5 +1,5 @@
-from src.core.common.context.implementations.cardo_context import CardoContext
-from src.core.helpers.dataframe import DataFrame
+from core.src.common.context.implementations.cardo_context import CardoContext
+from core.src.common.helpers.dataframe import DataFrame
 
 
 class IStep:

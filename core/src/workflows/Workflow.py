@@ -4,14 +4,14 @@ from typing import List
 import networkx as nx
 from matplotlib import pyplot as plt
 
-from src.libs.IStep import IStep
+from libs.src.IStep import IStep
 
 
 class Workflow(ABC):
     def __init__(self, graph):
         self.graph = graph
 
-    def add_after(self, next_steps: List[IStep], prev_step: IStep):
+    def add_after(self, next_steps: List[IStep], prev_step: List[IStep]):
         raise NotImplementedError()
 
     def add_last(self, next_step: IStep):

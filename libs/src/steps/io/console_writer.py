@@ -1,6 +1,6 @@
-from src.core.common.context.implementations.cardo_context import CardoContext
-from src.core.helpers.dataframe import DataFrame
-from src.libs.IStep import IStep
+from core.src.common.context.implementations.cardo_context import CardoContext
+from core.src.common.helpers.dataframe import DataFrame
+from libs.src.IStep import IStep
 
 
 class ConsoleWriter(IStep):
