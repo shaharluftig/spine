@@ -11,5 +11,6 @@ class CsvReader(IStep):
         self.path = path
 
     def process(self, cardo_context: CardoContext, df: DataFrame = None) -> DataFrame:
+        cardo_context.logger.info(f"Reading {self.path} with headers={self.headers}")
         df = pl.read_csv(self.path, has_header=self.headers)
         return df
