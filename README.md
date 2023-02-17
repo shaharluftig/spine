@@ -19,4 +19,5 @@ Feel free to fork and make contributions. I’ll try to get them into the main a
 License
 ----
 
-MIT
+Apache License 2.0
+
