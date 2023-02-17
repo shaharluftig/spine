@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Hi!'
+sidebar_label: 'Libs'
 sidebar_position: 3
 ---
-# Hello
+# CardoLibs
 
 This is my **first Docusaurus document**!
