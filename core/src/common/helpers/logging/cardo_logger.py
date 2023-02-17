@@ -15,9 +15,9 @@ class CardoLogger(metaclass=Singleton):
 
     def log_step(self, func):
         @wraps(func)
-        def step_wrapper(*args, **kwargs):
+        async def step_wrapper(*args, **kwargs):
             start_time = time.perf_counter()
-            result = func(*args, **kwargs)
+            result = await func(*args, **kwargs)
             end_time = time.perf_counter()
             self.logger.info(f'Step {func.__qualname__.split(".")[0]} '
                              f'Took {end_time - start_time:.4f} seconds')

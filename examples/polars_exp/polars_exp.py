@@ -1,3 +1,5 @@
+import asyncio
+
 from core.src.common.context.implementations.cardo_context import CardoContext
 from core.src.executors.implementations.workflow_executor import WorkflowExecutor
 from core.src.workflows.implementations.dag_workflow import DagWorkflow
@@ -18,15 +20,14 @@ def workflow_factory():
     workflow.add_last(rent_reader, names_reader)
     workflow.add_after([console_output], [rent_reader])
     workflow.add_after([console_output], [names_reader])
-
     return workflow
 
 
-def main():
+async def main():
     ctx = CardoContext().get_context()
     workflow = workflow_factory()
-    WorkflowExecutor(ctx).execute(workflow)
+    await WorkflowExecutor(ctx).execute(workflow)
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

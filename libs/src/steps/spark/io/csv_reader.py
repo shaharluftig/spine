@@ -8,7 +8,7 @@ class CsvReader(IStep):
         self.headers = has_headers
         self.path = path
 
-    def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
+    async def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
         ctx.logger.info(f"Reading {self.path} with headers={self.headers}")
         df = ctx.spark.read.csv(self.path, header=self.headers)
         return df

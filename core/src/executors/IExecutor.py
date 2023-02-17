@@ -3,5 +3,5 @@ from core.src.workflows.Workflow import Workflow
 
 
 class IExecutor:
-    def execute(self, workflow: Workflow, cardo_context: IContext):
+    async def execute(self, workflow: Workflow, cardo_context: IContext):
         raise NotImplementedError()

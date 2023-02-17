@@ -1,3 +1,5 @@
+import asyncio
+
 from pyspark.sql import SparkSession
 
 from core.src.common.context.implementations.cardo_context import CardoContext
@@ -23,12 +25,12 @@ def workflow_factory():
     return workflow
 
 
-def main():
+async def main():
     spark = SparkSession.builder.master("local").getOrCreate()
     ctx = CardoContext(spark_session=spark).get_context()
     workflow = workflow_factory()
-    WorkflowExecutor(ctx).execute(workflow)
+    await WorkflowExecutor(ctx).execute(workflow)
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

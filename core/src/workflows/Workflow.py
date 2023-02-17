@@ -17,7 +17,7 @@ class Workflow(ABC):
     def add_last(self, next_step: IStep):
         raise NotImplementedError()
 
-    def to_list(self):
+    def flat_graph(self):
         raise NotImplementedError()
 
     def get_before(self, step=None):

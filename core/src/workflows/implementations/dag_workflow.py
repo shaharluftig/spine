@@ -27,7 +27,7 @@ class DagWorkflow(Workflow):
         """Returns an iterator over leaf in current graph"""
         return iter([node for node in self.graph.nodes() if self.graph.out_degree(node) == 0])
 
-    def to_list(self):
+    def flat_graph(self):
         """Returns a generator of nodes in topologically sorted order"""
         return nx.algorithms.topological_sort(self.graph)
 
