@@ -1,1 +1,22 @@
-# cardo2
+# Cardo2.0
+
+[add]
+
+Feel free to fork and make contributions. I’ll try to get them into the main application.
+
+### Installation
+
+-
+
+### Development
+
+#### Todos in the near future
+
+- Add tests
+- Add more steps
+- Async workflow executor
+
+License
+----
+
+MIT
