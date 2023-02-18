@@ -9,4 +9,4 @@ class ConsoleWriter(IStep):
         cardo_context.logger.info("Writing to console")
         for df in dfs:
             print(df)
-        return df
+        return dfs

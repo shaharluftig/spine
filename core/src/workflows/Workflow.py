@@ -32,7 +32,6 @@ class Workflow(ABC):
                          boxstyle="round", ec="silver", pad=0.3),
             "edge_color": "gray"
         }
-        if style:
-            default_style = style
-        nx.draw_networkx(self.graph, **default_style)
+        style = style if style else default_style
+        nx.draw_networkx(self.graph, **style)
         plt.show()
