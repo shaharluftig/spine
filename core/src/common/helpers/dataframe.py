@@ -1,6 +1,8 @@
 from typing import Union
-from pyspark.sql import DataFrame as SparkDataFrame
+
+# TODO: Make optional imports
 from pandas import DataFrame as PandasDataFrame
 from polars import DataFrame as PolarsDataFrame
+from pyspark.sql import DataFrame as SparkDataFrame
 
 DataFrame = Union[SparkDataFrame, PandasDataFrame, PolarsDataFrame, None]

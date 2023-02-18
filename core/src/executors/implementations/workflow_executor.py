@@ -7,7 +7,6 @@ from core.src.workflows.Workflow import Workflow
 from libs.src.IStep import IStep
 
 
-# TODO: Make this async real
 class WorkflowExecutor(IExecutor):
     def __init__(self, ctx: CardoContext):
         self.ctx = ctx
