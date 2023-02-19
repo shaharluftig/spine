@@ -1,8 +1,7 @@
 import asyncio
 
-from pyspark.sql import SparkSession
-
 from core.src.common.context.implementations.cardo_context import CardoContext
+from core.src.common.helpers.mode import Mode
 from core.src.executors.implementations.workflow_executor import WorkflowExecutor
 from core.src.workflows.implementations.dag_workflow import DagWorkflow
 from libs.src.steps.spark.io.console_writer import ConsoleWriter
@@ -26,8 +25,7 @@ def workflow_factory():
 
 
 async def main():
-    spark = SparkSession.builder.master("local").getOrCreate()
-    ctx = CardoContext(spark_session=spark).get_context()
+    ctx = CardoContext(mode=Mode.SPARK).get_context()
     workflow = workflow_factory()
     await WorkflowExecutor(ctx).execute(workflow)
 

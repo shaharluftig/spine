@@ -1,5 +1,5 @@
 matplotlib
 networkx
-pyspark
+pyspark==3.2.1
 pandas
 polars
