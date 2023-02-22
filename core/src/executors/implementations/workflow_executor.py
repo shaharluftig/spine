@@ -1,7 +1,6 @@
 import asyncio
 
 from core.src.common.context.implementations.cardo_context import CardoContext
-from core.src.common.helpers.logging.cardo_logger import cardo_logger
 from core.src.executors.IExecutor import IExecutor
 from core.src.workflows.Workflow import Workflow
 from libs.src.IStep import IStep
@@ -12,7 +11,7 @@ class WorkflowExecutor(IExecutor):
         self.ctx = ctx
 
     async def __execute_step(self, step: IStep, dependencies):
-        result = cardo_logger.log_step(step.process)
+        result = self.ctx.get_cardo_logger().log_step(step.process)
         return await result(self.ctx, *dependencies)
 
     async def __get_dependency_results(self, dependencies, steps_results: dict, workflow: Workflow):

@@ -3,15 +3,19 @@ import sys
 import time
 from functools import wraps
 
-from core.src.common.helpers.singleton import Singleton
-
-logging.basicConfig(level=logging.INFO, handlers=[
-    logging.StreamHandler(sys.stdout)], format='%(asctime)s %(levelname)-6s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+from core.src.common.helpers.logging.Logger import Logger
 
 
-class CardoLogger(metaclass=Singleton):
-    def __init__(self, name: str = "CardoLogger"):
+class CardoLogger(Logger):
+    def __init__(self, run_id: str, name: str = "CardoLogger"):
+        super().__init__(run_id)
+        self.__setup_logger()
         self.logger = logging.getLogger(name)
+
+    def __setup_logger(self):
+        logging.basicConfig(level=logging.INFO, handlers=[
+            logging.StreamHandler(sys.stdout)], format=f'{self.run_id} | %(asctime)s %(levelname)s | %(message)s',
+                            datefmt='%Y-%m-%d %H:%M:%S')
 
     def log_step(self, func):
         @wraps(func)
@@ -24,9 +28,3 @@ class CardoLogger(metaclass=Singleton):
             return result
 
         return step_wrapper
-
-    def get_logger(self):
-        return self.logger
-
-
-cardo_logger = CardoLogger()
