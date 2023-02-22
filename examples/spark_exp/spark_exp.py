@@ -26,8 +26,8 @@ def workflow_factory():
 
 
 async def main():
-    spark = SparkSession.builder.master("local").getOrCreate()
-    ctx = CardoContext(spark_session=spark).get_context()
+    spark_session = SparkSession.builder.master("local").getOrCreate()
+    ctx = CardoContext.get_context(spark=spark_session)
     workflow = workflow_factory()
     await cardo_executor.execute(ctx, workflow)
 

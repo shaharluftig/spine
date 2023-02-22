@@ -24,7 +24,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = CardoContext().get_context()
+    ctx = CardoContext.get_context()
     workflow = workflow_factory()
     await cardo_executor.execute(ctx, workflow)
 
