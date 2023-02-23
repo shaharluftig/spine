@@ -35,5 +35,4 @@ class DagWorkflow(Workflow):
         """Returns an iterator over predecessor nodes of n"""
         if step is None:
             return self.__get_leaf_nodes()
-        else:
-            return self.graph.predecessors(step)
+        return self.graph.predecessors(step)

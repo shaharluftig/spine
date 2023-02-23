@@ -5,7 +5,6 @@ from core.src.executors.workflow_executors.IExecutor import IExecutor
 from core.src.workflows.Workflow import Workflow
 
 
-
 class AsyncWorkflowExecutor(IExecutor):
     @staticmethod
     async def __execute_step(ctx: CardoContext, step: IStep, dependencies):
@@ -13,17 +12,16 @@ class AsyncWorkflowExecutor(IExecutor):
         return await result(ctx, *dependencies)
 
     async def __get_dependency_results(self, ctx, dependencies, steps_results: dict, workflow: Workflow):
-        return [await self.__execute_step_by_dependencies(ctx, workflow, steps_results, dependency) for
-                dependency in dependencies]
+        return [await self.__execute_step_by_dependencies(ctx, workflow, steps_results, dependency)
+                for dependency in dependencies]
 
-    async def __execute_step_by_dependencies(self, ctx: CardoContext, workflow: Workflow, steps_results: dict,
-                                             step: IStep):
+    async def __execute_step_by_dependencies(self, ctx: CardoContext, workflow: Workflow,
+                                             steps_results: dict, step: IStep):
         if step in steps_results:
             return steps_results[step]
-        else:
-            dependencies = workflow.get_before(step)
-            dependencies_results = await self.__get_dependency_results(ctx, dependencies, steps_results, workflow)
-            steps_results[step] = await self.__execute_step(ctx, step, dependencies_results)
+        dependencies = workflow.get_before(step)
+        dependencies_results = await self.__get_dependency_results(ctx, dependencies, steps_results, workflow)
+        steps_results[step] = await self.__execute_step(ctx, step, dependencies_results)
 
     async def __execute_all_steps(self, ctx: CardoContext, workflow: Workflow):
         steps_results = {}

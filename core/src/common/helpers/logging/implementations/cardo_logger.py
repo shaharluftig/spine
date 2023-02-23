@@ -14,7 +14,8 @@ class CardoLogger(Logger):
 
     def __setup_logger(self):
         logging.basicConfig(level=logging.INFO, handlers=[
-            logging.StreamHandler(sys.stdout)], format=f'{self.run_id} | %(asctime)s %(levelname)s | %(message)s',
+            logging.StreamHandler(sys.stdout)],
+                            format=f'{self.run_id} | %(asctime)s %(levelname)s | %(message)s',
                             datefmt='%Y-%m-%d %H:%M:%S')
 
     def log_step(self, func):
