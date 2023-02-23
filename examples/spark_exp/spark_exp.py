@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 from core import DagWorkflow, CardoContext, execute
 from libs.src.steps.polars.io.console_writer import ConsoleWriter
 from libs.src.steps.polars.io.csv_reader import CsvReader
+spark.io.csv_reader import CsvReader
 
 
 def __setup_steps():
@@ -28,6 +29,7 @@ async def main():
     ctx = CardoContext.get_context(spark=spark_session)
     workflow = workflow_factory()
     await execute(ctx, workflow)
+  
 
 
 if __name__ == '__main__':
