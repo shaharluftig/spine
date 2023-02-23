@@ -1,4 +1,4 @@
-from core.src.common.context.implementations.cardo_context import CardoContext
+from core import CardoContext
 from core.src.workflows.Workflow import Workflow
 
 

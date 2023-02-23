@@ -4,7 +4,7 @@ from typing import List
 import networkx as nx
 from matplotlib import pyplot as plt
 
-from libs.src.IStep import IStep
+from core import IStep
 
 
 class Workflow(ABC):

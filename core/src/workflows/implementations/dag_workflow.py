@@ -2,8 +2,8 @@ from typing import List
 
 import networkx as nx
 
+from core import IStep
 from core.src.workflows.Workflow import Workflow
-from libs.src.IStep import IStep
 
 
 class DagWorkflow(Workflow):
