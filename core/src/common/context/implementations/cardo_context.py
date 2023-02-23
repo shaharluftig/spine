@@ -23,5 +23,5 @@ class CardoContext(IContext, metaclass=Singleton):
     @staticmethod
     def get_context(spark: SparkSession = None):
         ctx = CardoContext(spark)
-        ctx.logger.info(f"Starting Cardo context")
+        ctx.logger.info("Starting Cardo context")
         return ctx
