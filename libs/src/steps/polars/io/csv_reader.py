@@ -1,8 +1,6 @@
 import polars as pl
 
-from core.src.common.context.implementations.cardo_context import CardoContext
-from core.src.common.helpers.dataframe import DataFrame
-from libs.src.IStep import IStep
+from core import IStep, CardoContext, DataFrame
 
 
 class CsvReader(IStep):

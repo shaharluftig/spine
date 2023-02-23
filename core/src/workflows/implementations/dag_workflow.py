@@ -3,7 +3,7 @@ from typing import List
 import networkx as nx
 
 from core.src.workflows.Workflow import Workflow
-from libs.src.IStep import IStep
+from core.src.common.helpers.IStep import IStep
 
 
 class DagWorkflow(Workflow):

@@ -3,7 +3,7 @@ import asyncio
 from core.src.common.context.implementations.cardo_context import CardoContext
 from core.src.executors.workflow_executors.IExecutor import IExecutor
 from core.src.workflows.Workflow import Workflow
-from libs.src.IStep import IStep
+from core.src.common.helpers.IStep import IStep
 
 
 class AsyncWorkflowExecutor(IExecutor):
