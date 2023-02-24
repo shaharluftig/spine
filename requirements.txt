@@ -1,5 +1,7 @@
 matplotlib
 networkx
-pyspark==3.2.1
+pyspark
 pandas
 polars
+pyarrow
+connectorx
