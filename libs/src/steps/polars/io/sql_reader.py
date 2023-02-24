@@ -14,4 +14,5 @@ class SQLReader(IStep):
 
     async def process(self, cardo_context: CardoContext, df: DataFrame = None) -> DataFrame:
         cardo_context.logger.info(f"Querying: ({self.sql_query}) using: {self.connection_string}")
-        return pl.read_sql(sql=self.sql_query, connection_uri=self.connection_string, partition_on=self.partition_on)
+        df = pl.read_sql(sql=self.sql_query, connection_uri=self.connection_string, partition_on=self.partition_on)
+        return df
