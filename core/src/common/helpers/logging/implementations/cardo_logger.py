@@ -18,14 +18,13 @@ class CardoLogger(Logger):
                             format=f'{self.run_id} | %(asctime)s %(levelname)s | %(message)s',
                             datefmt='%Y-%m-%d %H:%M:%S')
 
-    def log_step(self, func):
+    def time_function(self, func, msg: str):
         @wraps(func)
         async def step_wrapper(*args, **kwargs):
             start_time = time.perf_counter()
             result = await func(*args, **kwargs)
             end_time = time.perf_counter()
-            self.logger.info(f'Step {func.__qualname__.split(".")[0]} '
-                             f'Took {end_time - start_time:.4f} seconds')
+            self.logger.info(f"{msg} Took {end_time - start_time:.4f} seconds")
             return result
 
         return step_wrapper

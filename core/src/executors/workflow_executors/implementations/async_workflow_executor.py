@@ -8,7 +8,7 @@ from core.src.workflows.Workflow import Workflow
 class AsyncWorkflowExecutor(IExecutor):
     @staticmethod
     async def __execute_step(ctx: CardoContext, step: IStep, dependencies):
-        result = ctx.get_cardo_logger().log_step(step.process)
+        result = ctx.get_cardo_logger().time_function(step.process, f"Step {step.__class__.__name__}")
         return await result(ctx, *dependencies)
 
     async def __get_dependency_results(self, ctx, dependencies, steps_results: dict, workflow: Workflow):
