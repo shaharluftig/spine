@@ -10,7 +10,7 @@ from libs.src.steps.polars.io.sql_reader import SQLReader
 def __setup_steps():
     db_path = os.path.dirname(os.path.realpath("../polars_exp/db/exp.db"))
     rent_reader = CsvReader("../polars_exp/resources/rent.csv", has_headers=True)
-    users_reader = SQLReader("select * FROM users", f"sqlite:{db_path}\\exp.db")
+    users_reader = SQLReader("SELECT * FROM users", f"sqlite:{db_path}\\exp.db")
     console_output = ConsoleWriter()
     return rent_reader, users_reader, console_output
 
