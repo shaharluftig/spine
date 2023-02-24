@@ -9,7 +9,6 @@ from core.src.common.helpers.singleton import Singleton
 
 
 class CardoContext(IContext, metaclass=Singleton):
-
     def __init__(self, spark_session: SparkSession = None, logger: Logger = CardoLogger):
         self.run_id = str(uuid.uuid1()).lower()
         self.__cardo_logger = logger(self.run_id)

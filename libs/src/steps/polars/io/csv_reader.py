@@ -4,6 +4,8 @@ from core import IStep, CardoContext, DataFrame
 
 
 class CsvReader(IStep):
+    """Local CSV file reader"""
+
     def __init__(self, path: str, has_headers: bool):
         self.headers = has_headers
         self.path = path

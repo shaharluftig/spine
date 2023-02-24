@@ -19,8 +19,8 @@ def workflow_factory():
     workflow = DagWorkflow()
     rent_reader, users_reader, console_output = __setup_steps()
     workflow.add_last(rent_reader, users_reader)
-    workflow.add_after([console_output], [rent_reader])
-    workflow.add_after([console_output], [users_reader])
+    workflow.add_after([ConsoleWriter()], [rent_reader])
+    workflow.add_after([ConsoleWriter()], [users_reader])
     return workflow
 
 

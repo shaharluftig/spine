@@ -4,4 +4,4 @@ pyspark
 pandas
 polars
 pyarrow
-connectorx
+connectorx==0.3.2a2
