@@ -3,8 +3,8 @@ import asyncio
 from pyspark.sql import SparkSession
 
 from core import DagWorkflow, CardoContext, execute
-from libs.src.steps.polars.io.console_writer import ConsoleWriter
-from libs.src.steps.polars.io.csv_reader import CsvReader
+from libs.src.steps.polars.io.console.console_writer import ConsoleWriter
+from libs.src.steps.polars.io.csv.csv_reader import CsvReader
 
 
 def __setup_steps():

@@ -2,24 +2,26 @@ import asyncio
 import os
 
 from core import DagWorkflow, CardoContext, execute
-from libs.src.steps.polars.io.console_writer import ConsoleWriter
-from libs.src.steps.polars.io.csv_reader import CsvReader
-from libs.src.steps.polars.io.sql_reader import SQLReader
+from libs.src.steps.polars.io.console.console_writer import ConsoleWriter
+from libs.src.steps.polars.io.csv.csv_reader import CsvReader
+from libs.src.steps.polars.io.csv.csv_writer import CSVWriter
+from libs.src.steps.polars.io.sql.sql_reader import SQLReader
 
 
 def __setup_steps():
     db_path = os.path.dirname(os.path.realpath("../polars_exp/db/exp.db"))
     sqlite_conn = f"sqlite:{db_path}\\exp.db"
-    rent_reader = CsvReader("../polars_exp/resources/rent.csv", has_headers=True)
+    tech_migrations_reader = CsvReader("../polars_exp/resources/migrations.csv", has_headers=True)
     users_reader = SQLReader("SELECT * FROM users", sqlite_conn)
-    return rent_reader, users_reader
+    csv_writer = CSVWriter("./resources/output.csv")
+    return tech_migrations_reader, users_reader, csv_writer
 
 
 def workflow_factory():
     workflow = DagWorkflow("PolarsExample")
-    rent_reader, users_reader = __setup_steps()
-    workflow.add_last(rent_reader, users_reader)
-    workflow.add_after([ConsoleWriter()], [rent_reader, users_reader])
+    tech_migrations_reader, users_reader, csv_writer = __setup_steps()
+    workflow.add_after([ConsoleWriter()], [tech_migrations_reader, users_reader])
+    workflow.add_after([csv_writer], [tech_migrations_reader])
 
     return workflow
 
