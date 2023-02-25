@@ -2,19 +2,20 @@ import logging
 import sys
 import time
 from functools import wraps
+from typing import List
 
 from core.src.common.helpers.logging.Logger import Logger
 
 
 class CardoLogger(Logger):
-    def __init__(self, run_id: str, name: str = "CardoLogger"):
+    def __init__(self, run_id: str, handlers: List = [], name: str = "CardoLogger"):
         super().__init__(run_id)
+        self.handlers = handlers
         self.__setup_logger()
         self.logger = logging.getLogger(name)
 
     def __setup_logger(self):
-        logging.basicConfig(level=logging.INFO, handlers=[
-            logging.StreamHandler(sys.stdout)],
+        logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler(sys.stdout)] + self.handlers,
                             format=f'{self.run_id} | %(asctime)s %(levelname)s | %(message)s',
                             datefmt='%Y-%m-%d %H:%M:%S')
 
