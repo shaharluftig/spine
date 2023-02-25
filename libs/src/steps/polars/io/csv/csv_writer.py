@@ -10,7 +10,8 @@ class CSVWriter(IStep):
         self.sep = sep
         self.batch_size = batch_size
 
-    async def process(self, cardo_context: CardoContext, df: DataFrame = None) -> DataFrame:
-        cardo_context.logger.info(f"Writing CSV to {self.path} with headers={self.headers}")
-        df.write_csv(self.path, has_header=self.headers, batch_size=self.batch_size, sep=self.sep)
+    async def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
+        ctx.logger.info(f"Writing CSV to {self.path} with headers={self.headers}")
+        writer = df.collect().write_csv if ctx.lazy_polars else df.write_csv
+        writer(self.path, has_header=self.headers, batch_size=self.batch_size, sep=self.sep)
         return df

@@ -11,8 +11,8 @@ class CsvReader(IStep):
         self.headers = has_headers
         self.path = path
 
-    async def process(self, cardo_context: CardoContext, df: DataFrame = None) -> DataFrame:
-        cardo_context.logger.info(f"Reading {self.path} with headers={self.headers}")
-
-        df = pl.read_csv(self.path, has_header=self.headers)
+    async def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
+        ctx.logger.info(f"Reading {self.path} with headers={self.headers}")
+        reader = pl.scan_csv if ctx.lazy_polars else pl.read_csv
+        df = reader(self.path, has_header=self.headers)
         return df

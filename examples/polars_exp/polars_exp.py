@@ -22,12 +22,11 @@ def workflow_factory():
     tech_migrations_reader, users_reader, csv_writer = __setup_steps()
     workflow.add_after([ConsoleWriter()], [tech_migrations_reader, users_reader])
     workflow.add_after([csv_writer], [tech_migrations_reader])
-
     return workflow
 
 
 async def main():
-    ctx = CardoContext.get_context()
+    ctx = CardoContext.get_context(lazy_polars=True)
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
