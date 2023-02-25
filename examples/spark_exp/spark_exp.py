@@ -15,7 +15,7 @@ def __setup_steps():
 
 
 def workflow_factory():
-    workflow = DagWorkflow()
+    workflow = DagWorkflow("SparkExample")
     rent_reader, names_reader, console_output = __setup_steps()
     workflow.add_last(rent_reader, names_reader)
     workflow.add_after([console_output], [rent_reader, names_reader])

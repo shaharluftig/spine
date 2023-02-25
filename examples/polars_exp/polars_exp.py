@@ -9,18 +9,18 @@ from libs.src.steps.polars.io.sql_reader import SQLReader
 
 def __setup_steps():
     db_path = os.path.dirname(os.path.realpath("../polars_exp/db/exp.db"))
+    sqlite_conn = f"sqlite:{db_path}\\exp.db"
     rent_reader = CsvReader("../polars_exp/resources/rent.csv", has_headers=True)
-    users_reader = SQLReader("SELECT * FROM users", f"sqlite:{db_path}\\exp.db")
-    console_output = ConsoleWriter()
-    return rent_reader, users_reader, console_output
+    users_reader = SQLReader("SELECT * FROM users", sqlite_conn)
+    return rent_reader, users_reader
 
 
 def workflow_factory():
-    workflow = DagWorkflow()
-    rent_reader, users_reader, console_output = __setup_steps()
+    workflow = DagWorkflow("PolarsExample")
+    rent_reader, users_reader = __setup_steps()
     workflow.add_last(rent_reader, users_reader)
-    workflow.add_after([ConsoleWriter()], [rent_reader])
-    workflow.add_after([ConsoleWriter()], [users_reader])
+    workflow.add_after([ConsoleWriter()], [rent_reader, users_reader])
+
     return workflow
 
 
