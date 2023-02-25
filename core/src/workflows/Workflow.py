@@ -8,7 +8,8 @@ from core import IStep
 
 
 class Workflow(ABC):
-    def __init__(self, graph):
+    def __init__(self, name: str, graph):
+        self.name = name
         self.graph = graph
 
     def add_after(self, next_steps: List[IStep], prev_step: List[IStep]):

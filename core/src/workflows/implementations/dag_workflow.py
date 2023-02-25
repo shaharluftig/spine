@@ -8,8 +8,8 @@ from core.src.workflows.Workflow import Workflow
 
 class DagWorkflow(Workflow):
 
-    def __init__(self):
-        super().__init__(nx.DiGraph())
+    def __init__(self, workflow_name: str):
+        super().__init__(workflow_name, graph=nx.DiGraph())
 
     def add_after(self, next_steps: List[IStep], prev_step: List[IStep]) -> None:
         self.graph.add_nodes_from(next_steps)

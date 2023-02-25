@@ -31,4 +31,5 @@ class AsyncWorkflowExecutor(IExecutor):
         return steps_results
 
     async def execute(self, ctx: CardoContext, workflow: Workflow):
+        ctx.logger.info(f"Executing {workflow.name}")
         return await self.__execute_all_steps(ctx, workflow)
