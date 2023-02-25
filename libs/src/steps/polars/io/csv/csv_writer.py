@@ -1,4 +1,5 @@
-from core import IStep, CardoContext, DataFrame
+from core import IStep, CardoContext
+from polars import DataFrame
 
 
 class CSVWriter(IStep):
