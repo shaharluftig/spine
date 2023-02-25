@@ -10,5 +10,4 @@ class CsvReader(IStep):
 
     async def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
         ctx.logger.info(f"Reading {self.path} with headers={self.headers}")
-        df = ctx.spark.read.csv(self.path, header=self.headers)
-        return df
+        return ctx.spark.read.csv(self.path, header=self.headers)
