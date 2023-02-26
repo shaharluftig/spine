@@ -30,7 +30,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = CardoPolarsContext.get_context(lazy=True)
+    ctx = CardoPolarsContext.get_context(lazy=True, config={"set_tbl_rows": 20})
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
