@@ -2,10 +2,11 @@ import asyncio
 
 from pyspark.sql import SparkSession
 
-from core import DagWorkflow, execute
-from core.src.common.context.implementations.spark_context import CardoSparkContext
-from libs.src.steps.spark.io.console.console_writer import ConsoleWriter
-from libs.src.steps.spark.io.csv.csv_reader import CsvReader
+from core.common.context import CardoSparkContext
+from core.executors import execute
+from core.workflows import DagWorkflow
+from libs.steps.spark.io.console.console_writer import ConsoleWriter
+from libs.steps.spark.io.csv.csv_reader import CsvReader
 
 
 def __setup_steps():

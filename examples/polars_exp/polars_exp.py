@@ -1,13 +1,14 @@
 import asyncio
 import os
 
-from core import DagWorkflow, execute
-from core.src.common.context.implementations.polars_context import CardoPolarsContext
+from core.common.context import CardoPolarsContext
+from core.executors import execute
+from core.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
-from libs.src.steps.polars.io.console.console_writer import ConsoleWriter
-from libs.src.steps.polars.io.csv.csv_reader import CsvReader
-from libs.src.steps.polars.io.csv.csv_writer import CSVWriter
-from libs.src.steps.polars.io.sql.sql_reader import SQLReader
+from libs.steps.polars.io.console.console_writer import ConsoleWriter
+from libs.steps.polars.io.csv.csv_reader import CsvReader
+from libs.steps.polars.io.csv.csv_writer import CSVWriter
+from libs.steps.polars.io.sql.sql_reader import SQLReader
 
 
 def __setup_steps():
