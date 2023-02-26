@@ -1,13 +1,13 @@
 import asyncio
 
-from core import CardoContext, IStep
+from core import BaseContext, IStep
 from core.src.executors.workflow_executors.IExecutor import IExecutor
 from core.src.workflows.Workflow import Workflow
 
 
 class AsyncWorkflowExecutor(IExecutor):
     @staticmethod
-    async def __execute_step(ctx: CardoContext, step: IStep, dependencies):
+    async def __execute_step(ctx: BaseContext, step: IStep, dependencies):
         result = ctx.get_cardo_logger().time_function(step.process, f"Step {step.__class__.__name__}")
         return await result(ctx, *dependencies)
 
@@ -15,7 +15,7 @@ class AsyncWorkflowExecutor(IExecutor):
         return [await self.__execute_step_by_dependencies(ctx, workflow, steps_results, dependency)
                 for dependency in dependencies]
 
-    async def __execute_step_by_dependencies(self, ctx: CardoContext, workflow: Workflow,
+    async def __execute_step_by_dependencies(self, ctx: BaseContext, workflow: Workflow,
                                              steps_results: dict, step: IStep):
         if step in steps_results:
             return steps_results[step]
@@ -23,13 +23,13 @@ class AsyncWorkflowExecutor(IExecutor):
         dependencies_results = await self.__get_dependency_results(ctx, dependencies, steps_results, workflow)
         steps_results[step] = await self.__execute_step(ctx, step, dependencies_results)
 
-    async def __execute_all_steps(self, ctx: CardoContext, workflow: Workflow):
+    async def __execute_all_steps(self, ctx: BaseContext, workflow: Workflow):
         steps_results = {}
         flat_graph = workflow.flat_graph()
         await asyncio.gather(*[self.__execute_step_by_dependencies(ctx, workflow, steps_results, step)
                                for step in flat_graph])
         return steps_results
 
-    async def execute(self, ctx: CardoContext, workflow: Workflow):
+    async def execute(self, ctx: BaseContext, workflow: Workflow):
         ctx.logger.info(f"Executing {workflow.name}")
         return await self.__execute_all_steps(ctx, workflow)

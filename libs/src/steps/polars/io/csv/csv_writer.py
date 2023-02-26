@@ -1,5 +1,7 @@
-from core import IStep, CardoContext
-from polars import DataFrame
+from core import IStep
+from core.src.common.context.implementations.polars_context import CardoPolarsContext
+
+from core.src.common.helpers.dataframe import PolarsDataFrame
 
 
 class CSVWriter(IStep):
@@ -11,8 +13,8 @@ class CSVWriter(IStep):
         self.sep = sep
         self.batch_size = batch_size
 
-    async def process(self, ctx: CardoContext, df: DataFrame = None) -> DataFrame:
+    async def process(self, ctx: CardoPolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
         ctx.logger.info(f"Writing CSV to {self.path} with headers={self.headers}")
-        writer = df.collect().write_csv if ctx.lazy_polars else df.write_csv
+        writer = df.collect().write_csv if ctx.lazy else df.write_csv
         writer(self.path, has_header=self.headers, batch_size=self.batch_size, sep=self.sep)
         return df

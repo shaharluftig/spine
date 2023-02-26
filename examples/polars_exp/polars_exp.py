@@ -1,7 +1,8 @@
 import asyncio
 import os
 
-from core import DagWorkflow, CardoContext, execute
+from core import DagWorkflow, execute
+from core.src.common.context.implementations.polars_context import CardoPolarsContext
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
 from libs.src.steps.polars.io.console.console_writer import ConsoleWriter
 from libs.src.steps.polars.io.csv.csv_reader import CsvReader
@@ -29,7 +30,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = CardoContext.get_context(lazy_polars=True)
+    ctx = CardoPolarsContext.get_context(lazy=True)
     workflow = workflow_factory()
     await execute(ctx, workflow)
 

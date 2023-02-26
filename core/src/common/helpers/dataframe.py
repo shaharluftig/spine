@@ -1,9 +1,11 @@
 from typing import Union
 
-# TODO: Make optional imports
 from pandas import DataFrame as PandasDataFrame
-from polars import DataFrame as PolarsDataFrame
-from polars import LazyFrame as LazyPolarsDataFrame
+from polars import LazyFrame, DataFrame as EagerDataFrame
 from pyspark.sql import DataFrame as SparkDataFrame
 
-DataFrame = Union[SparkDataFrame, PandasDataFrame, PolarsDataFrame, LazyPolarsDataFrame, None]
+# TODO: Make optional imports
+
+PolarsDataFrame = Union[LazyFrame, EagerDataFrame]
+
+DataFrame = Union[SparkDataFrame, PolarsDataFrame, PandasDataFrame]

@@ -2,9 +2,10 @@ import asyncio
 
 from pyspark.sql import SparkSession
 
-from core import DagWorkflow, CardoContext, execute
-from libs.src.steps.polars.io.console.console_writer import ConsoleWriter
-from libs.src.steps.polars.io.csv.csv_reader import CsvReader
+from core import DagWorkflow, execute
+from core.src.common.context.implementations.spark_context import CardoSparkContext
+from libs.src.steps.spark.io.console.console_writer import ConsoleWriter
+from libs.src.steps.spark.io.csv.csv_reader import CsvReader
 
 
 def __setup_steps():
@@ -25,7 +26,7 @@ def workflow_factory():
 
 async def main():
     spark_session = SparkSession.builder.master("local").getOrCreate()
-    ctx = CardoContext.get_context(spark=spark_session)
+    ctx = CardoSparkContext.get_context(spark_session)
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
