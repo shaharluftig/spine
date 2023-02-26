@@ -1,5 +1,7 @@
+from pyspark.sql import SparkSession
+
 from core import BaseContext
-from core.src.common.helpers.dataframe import PolarsDataFrame
+from core.src.common.context.implementations.spark_context import CardoSparkContext
 
 
 class CardoPolarsContext(BaseContext):
@@ -21,9 +23,5 @@ class CardoPolarsContext(BaseContext):
         return ctx
 
     @staticmethod
-    def into_pandas(df: PolarsDataFrame) -> PolarsDataFrame:
-        if df:
-            return df.to_pandas()
-
-    def into_spark(self):
-        pass
+    def into_spark(spark_session: SparkSession):
+        return CardoSparkContext.get_context(spark_session)

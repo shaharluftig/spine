@@ -9,5 +9,5 @@ class IStep:
             -> Union[DataFrame, Tuple[DataFrame]]:
         raise NotImplementedError
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__class__.__name__

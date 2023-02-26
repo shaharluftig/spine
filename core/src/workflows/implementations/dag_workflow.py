@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Iterable
 
 import networkx as nx
 
@@ -23,11 +23,11 @@ class DagWorkflow(Workflow):
             for node in next_steps:
                 self.graph.add_edges_from([(leaf_node, node) for leaf_node in leaf_nodes])
 
-    def __get_leaf_nodes(self):
+    def __get_leaf_nodes(self) -> Iterable[List]:
         """Returns an iterator over leaf in current graph"""
         return iter([node for node in self.graph.nodes() if self.graph.out_degree(node) == 0])
 
-    def flat_graph(self):
+    def flat_graph(self) -> List:
         """Returns a generator of nodes in topologically sorted order"""
         return nx.algorithms.topological_sort(self.graph)
 
