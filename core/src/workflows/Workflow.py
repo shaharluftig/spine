@@ -24,7 +24,7 @@ class Workflow(ABC):
     def get_before(self, step=None):
         raise NotImplementedError()
 
-    def show_graph(self, style: dict = None):
+    def show_graph(self, style: dict = None) -> None:
         # TODO : Export this style to config
         default_style = {
             "arrows": True,
