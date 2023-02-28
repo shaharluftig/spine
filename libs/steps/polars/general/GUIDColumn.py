@@ -2,7 +2,7 @@ from typing import Union, Tuple, List
 
 import polars as pl
 
-from core.common.context import CardoPolarsContext
+from core.common.context import GarnetPolarsContext
 from core.common.helpers.dataframes import PolarsDataFrame
 from core.common.helpers.steps import PolarsStep
 
@@ -12,7 +12,7 @@ class GUIDColumn(PolarsStep):
         self.guid_column_name = guid_column_name
         self.column_to_hash = column_to_hash
 
-    async def process(self, ctx: CardoPolarsContext, df: Union[PolarsDataFrame, Tuple[PolarsDataFrame]]) \
+    async def process(self, ctx: GarnetPolarsContext, df: Union[PolarsDataFrame, Tuple[PolarsDataFrame]]) \
             -> Union[PolarsDataFrame, Tuple[PolarsDataFrame]]:
         ctx.logger.info(f"Creating GUID Coulmn ['{self.guid_column_name}'] using {self.column_to_hash}")
         return df.with_columns([pl.col(*self.column_to_hash).hash().alias(self.guid_column_name)])

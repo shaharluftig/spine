@@ -1,7 +1,7 @@
 import asyncio
 import os
 
-from core.common.context import CardoPolarsContext
+from core.common.context import GarnetPolarsContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
@@ -34,7 +34,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = CardoPolarsContext.get_context(lazy=True, config={"set_tbl_rows": 20})
+    ctx = GarnetPolarsContext.get_context(lazy=True, config={"set_tbl_rows": 20})
     workflow = workflow_factory()
     await execute(ctx, workflow)
 

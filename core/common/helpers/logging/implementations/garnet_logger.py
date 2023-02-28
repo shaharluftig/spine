@@ -7,8 +7,8 @@ from typing import List
 from core.common.helpers.logging.Logger import Logger
 
 
-class CardoLogger(Logger):
-    def __init__(self, run_id: str, handlers: List = [], name: str = "CardoLogger"):
+class GarnetLogger(Logger):
+    def __init__(self, run_id: str, handlers: List = [], name: str = "GarnetLogger"):
         super().__init__(run_id)
         self.handlers = handlers
         self.__setup_logger()

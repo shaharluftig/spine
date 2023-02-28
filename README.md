@@ -1,4 +1,4 @@
-# Cardo2.0
+# Garnet2.0
 
 [add]
 

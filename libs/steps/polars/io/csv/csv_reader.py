@@ -1,6 +1,6 @@
 import polars as pl
 
-from core.common.context import CardoPolarsContext
+from core.common.context import GarnetPolarsContext
 from core.common.helpers.dataframes import PolarsDataFrame
 from core.common.helpers.steps import PolarsStep
 
@@ -13,7 +13,7 @@ class CsvReader(PolarsStep):
         self.headers = has_headers
         self.path = path
 
-    async def process(self, ctx: CardoPolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
+    async def process(self, ctx: GarnetPolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
         ctx.logger.info(f"Reading {self.path} with headers={self.headers}")
         reader = pl.scan_csv if ctx.lazy else pl.read_csv
         df = reader(self.path, has_header=self.headers)

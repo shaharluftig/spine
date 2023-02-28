@@ -1,1 +1,1 @@
-from core.common.helpers.logging.implementations.cardo_logger import CardoLogger
+from core.common.helpers.logging.implementations.garnet_logger import GarnetLogger
