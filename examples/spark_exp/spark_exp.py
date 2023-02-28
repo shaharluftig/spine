@@ -1,6 +1,5 @@
 import asyncio
 
-from pyspark.sql import SparkSession
 from core.common.context import GarnetSparkContext
 from core.executors import execute
 from core.workflows import DagWorkflow
@@ -25,7 +24,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = GarnetSparkContext.get_context(spark_config={"master": "local"})
+    ctx = GarnetSparkContext.get_context(spark_config={"spark.executor.memory": "1gb"})  # Example config
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
