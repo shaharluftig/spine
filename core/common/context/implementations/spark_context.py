@@ -1,22 +1,25 @@
+import pyspark
 from pyspark.sql import SparkSession
 
 from core.common.context import BaseContext
 
 
 class GarnetSparkContext(BaseContext):
-    def __init__(self, spark_session: SparkSession):
+    def __init__(self, spark_session: SparkSession, spark_config: dict):
         super().__init__()
-        self.spark = self.setup_spark_session(spark_session)
+        self.spark = self.__setup_spark_session(spark_session, spark_config)
 
     @staticmethod
-    def setup_spark_session(spark_session: SparkSession):
+    def __setup_spark_session(spark_session: SparkSession, spark_config: dict):
         if spark_session:
             return spark_session
-        return SparkSession.builder.master("local").getOrCreate()
+        return SparkSession.builder.config(conf=pyspark.SparkConf().setAll(spark_config.items())) \
+            .enableHiveSupport().getOrCreate()
 
     @staticmethod
-    def get_context(spark_session: SparkSession = None):
-        ctx = GarnetSparkContext(spark_session)
+    def get_context(spark_config=None, spark_session: SparkSession = None):
+        spark_config = {} if not spark_config else spark_config
+        ctx = GarnetSparkContext(spark_session, spark_config)
         ctx.logger.info("Starting GarnetSparkContext")
         return ctx
 
