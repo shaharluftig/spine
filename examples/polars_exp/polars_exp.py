@@ -28,6 +28,7 @@ def workflow_factory():
     migrations_reader, migrations_parser, guid_column, users_reader, csv_writer = __setup_steps()
     workflow.add_after([migrations_parser], [migrations_reader])
     workflow.add_after([guid_column], [migrations_parser])
+    workflow.add_after([ConsoleWriter()], [users_reader])
     workflow.add_after([csv_writer, ConsoleWriter()], [guid_column])
     return workflow
 

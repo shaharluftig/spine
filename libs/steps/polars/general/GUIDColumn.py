@@ -14,4 +14,5 @@ class GUIDColumn(PolarsStep):
 
     async def process(self, ctx: CardoPolarsContext, df: Union[PolarsDataFrame, Tuple[PolarsDataFrame]]) \
             -> Union[PolarsDataFrame, Tuple[PolarsDataFrame]]:
+        ctx.logger.info(f"Creating GUID Coulmn ['{self.guid_column_name}'] using {self.column_to_hash}")
         return df.with_columns([pl.col(*self.column_to_hash).hash().alias(self.guid_column_name)])
