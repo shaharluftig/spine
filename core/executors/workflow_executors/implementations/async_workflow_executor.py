@@ -11,7 +11,7 @@ from core.workflows.Workflow import Workflow
 class AsyncWorkflowExecutor(IExecutor):
     @staticmethod
     async def __execute_step(ctx: BaseContext, step: IStep, dependencies) -> Union[DataFrame, Tuple[DataFrame]]:
-        result = ctx.get_cardo_logger().time_function(step.process, f"Step {step.__class__.__name__}")
+        result = ctx.get_garnet_logger().time_function(step.process, f"Step {step.__class__.__name__}")
         return await result(ctx, *dependencies)
 
     async def __get_dependency_results(self, ctx, dependencies, steps_results: dict, workflow: Workflow) -> List:

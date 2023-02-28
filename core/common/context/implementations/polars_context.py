@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 from core.common.context import BaseContext
 
 
-class CardoPolarsContext(BaseContext):
+class GarnetPolarsContext(BaseContext):
     def __init__(self, lazy: bool, config: dict):
         super().__init__()
         self.lazy = lazy
@@ -20,12 +20,12 @@ class CardoPolarsContext(BaseContext):
 
     @staticmethod
     def get_context(lazy: bool = True, config: dict = None):
-        ctx = CardoPolarsContext(lazy, config)
-        ctx.logger.info("Starting Cardo-Polars context")
+        ctx = GarnetPolarsContext(lazy, config)
+        ctx.logger.info("Starting GarnetPolarsContext")
         return ctx
 
     @staticmethod
     def into_spark(spark_session: SparkSession = None):
-        """Converts CardoPolarsContext to CardoSparkContext"""
-        from core.common.context.implementations.spark_context import CardoSparkContext
-        return CardoSparkContext(spark_session)
+        """Converts GarnetPolarsContext to GarnetSparkContext"""
+        from core.common.context.implementations.spark_context import GarnetSparkContext
+        return GarnetSparkContext(spark_session)

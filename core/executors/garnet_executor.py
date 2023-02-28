@@ -5,4 +5,4 @@ from core.workflows import Workflow
 
 
 async def execute(ctx: BaseContext, workflow: Workflow, executor: IExecutor = AsyncWorkflowExecutor()) -> dict:
-    return await ctx.get_cardo_logger().time_function(executor.execute, f"{workflow.name} execution")(ctx, workflow)
+    return await ctx.get_garnet_logger().time_function(executor.execute, f"{workflow.name} execution")(ctx, workflow)
