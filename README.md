@@ -1,4 +1,4 @@
-# Garnet2.0
+# Garnet
 
 [add]
 
