@@ -1,5 +1,6 @@
 import asyncio
 
+from pyspark.sql import SparkSession
 from core.common.context import GarnetSparkContext
 from core.executors import execute
 from core.workflows import DagWorkflow

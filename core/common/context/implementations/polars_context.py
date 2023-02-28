@@ -31,3 +31,4 @@ class GarnetPolarsContext(BaseContext):
         spark_config = {} if not spark_config else spark_config
         from core.common.context.implementations.spark_context import GarnetSparkContext
         return GarnetSparkContext(spark_session, spark_config)
+
