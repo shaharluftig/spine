@@ -20,12 +20,14 @@ class GarnetPolarsContext(BaseContext):
 
     @staticmethod
     def get_context(lazy: bool = True, config: dict = None):
+        """Get or create GarnetPolars context"""
         ctx = GarnetPolarsContext(lazy, config)
         ctx.logger.info("Starting GarnetPolarsContext")
         return ctx
 
     @staticmethod
-    def into_spark(spark_session: SparkSession = None):
+    def into_spark(spark_config: dict = {}, spark_session: SparkSession = None):
         """Converts GarnetPolarsContext to GarnetSparkContext"""
+        spark_config = {} if not spark_config else spark_config
         from core.common.context.implementations.spark_context import GarnetSparkContext
-        return GarnetSparkContext(spark_session)
+        return GarnetSparkContext(spark_session, spark_config)

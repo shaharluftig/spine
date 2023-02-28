@@ -6,6 +6,7 @@ from core.common.helpers.steps import PolarsStep
 
 
 class MigrationsParser(PolarsStep):
+    """Example for custom step"""
 
     async def process(self, ctx: GarnetPolarsContext, df: PolarsDataFrame) -> PolarsDataFrame:
         df = df.select(["company", "year", "from", "to"])

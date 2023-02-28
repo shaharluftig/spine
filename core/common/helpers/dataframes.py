@@ -8,5 +8,6 @@ from pyspark.sql import DataFrame as _SparkDataFrame
 
 PolarsDataFrame = Union[_LazyFrame, _EagerDataFrame]
 SparkDataFrame = _SparkDataFrame
+PandasDataFrame = _PandasDataFrame
 
 DataFrame = Union[SparkDataFrame, PolarsDataFrame, _PandasDataFrame]
