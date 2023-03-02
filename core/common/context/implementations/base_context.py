@@ -12,7 +12,7 @@ class BaseContext(IContext, metaclass=Singleton):
         self.__garnet_logger = logger(self.run_id, log_handlers)
         self.logger = self.__garnet_logger.logger
 
-    def get_garnet_logger(self) -> Logger:
+    def get_garnet_logger(self) -> GarnetLogger:
         return self.__garnet_logger
 
     @staticmethod
