@@ -25,7 +25,7 @@ class HiveWriter(SparkStep):
         self.num_partitions = num_partitions
         self.is_new_partitions = is_new_partitions
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
         try:
             if self.overwrite_partition:
                 self._handle_partition_overwriting(ctx, df)

@@ -13,7 +13,7 @@ class HdfsWriter(SparkStep):
         self.partitionBy = partitionBy
         self.options = options or {}
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
         try:
             ctx.spark.catalog.refreshByPath(self.path)
             df.write.save(self.path, self.format, self.mode, self.partitionBy, **self.options)

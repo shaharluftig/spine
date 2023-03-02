@@ -10,7 +10,7 @@ class HdfsReader(SparkStep):
         self.schema = schema
         self.options = options or {}
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
         df.spark.catalog.refreshByPath(self.path)
         data = df.spark.read.load(self.path, self.format, self.schema, **self.options)
         df.logger.info(f'read data from Hdfs from {self.path} successfully')

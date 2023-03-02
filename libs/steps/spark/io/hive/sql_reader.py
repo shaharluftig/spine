@@ -7,7 +7,7 @@ class SqlReader(SparkStep):
     def __init__(self, table_name: str):
         self.table_name = table_name
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
         df = ctx.spark.table(self.table_name)
         ctx.logger.info(f'Reading table: {self.table_name} from Hive MetaStore')
         return df

@@ -13,8 +13,8 @@ class JDBCWriter(SparkStep):
         self.properties = properties
         self.properties.update({"batchsize": str(batchsize)})
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
-        ctx.dataframe.write.jdbc(
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
+        df.write.jdbc(
             self.connection_string,
             self.table_name,
             self.mode,

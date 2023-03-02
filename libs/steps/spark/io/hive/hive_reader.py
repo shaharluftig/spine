@@ -7,7 +7,7 @@ class HiveReader(SparkStep):
     def __init__(self, query: str):
         self.query = query
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
         df = ctx.spark.sql(self.query)
         ctx.logger.info(f'Reading query: {self.query} from Hive MetaStore')
         return df

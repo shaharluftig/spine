@@ -15,7 +15,7 @@ class JDBCReader(SparkStep):
         self.upper_bound = upper_bound
         self.num_parallel = num_parallel
 
-    def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
+    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None):
         df = ctx.spark.read.jdbc(
             self.connection_string,
             self.table_name,
