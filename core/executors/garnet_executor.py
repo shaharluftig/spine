@@ -1,7 +1,7 @@
 from core.common.context import BaseContext
 from core.executors.workflow_executors.IExecutor import IExecutor
 from core.executors.workflow_executors.implementations.async_workflow_executor import AsyncWorkflowExecutor
-from core.workflows import Workflow
+from core.workflows.Workflow import Workflow
 
 
 async def execute(ctx: BaseContext, workflow: Workflow, executor: IExecutor = AsyncWorkflowExecutor()) -> dict:
