@@ -17,7 +17,7 @@ class HdfsWriter(SparkStep):
         try:
             ctx.spark.catalog.refreshByPath(self.path)
             df.write.save(self.path, self.format, self.mode, self.partitionBy, **self.options)
-            ctx.logger.info(f"wrote datfaframe to {self.path}")
+            ctx.logger.info(f"Wrote dataframe to HDFS: {self.path}")
             return df
         except Exception as e:
-            ctx.logger.error(f"failed to write dataframe to {self.path}. {type(e)}: {str(e)}")
+            ctx.logger.error(f"Failed to write dataframe to HDFS: {self.path}. {type(e)}: {str(e)}")

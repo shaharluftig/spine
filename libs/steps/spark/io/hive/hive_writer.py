@@ -33,10 +33,10 @@ class HiveWriter(SparkStep):
                 df.write.saveAsTable(self.table_name, mode=self.mode, format=self.file_format,
                                      partitionBy=self.partition_by, **self.kwargs)
                 ctx.logger.info(
-                    f"wrote table: {self.table_name} to Hive MetaStore. mode: {self.mode}, format: {self.file_format}")
+                    f"Wrote table: {self.table_name} to Hive MetaStore. mode: {self.mode}, format: {self.file_format}")
         except Exception as e:
             ctx.logger.error(
-                f'failed to write table {self.table_name} to Hive. {type(e)}: {str(e)}')
+                f'Failed to write table {self.table_name} to Hive. {type(e)}: {str(e)}')
             raise
 
         return df
