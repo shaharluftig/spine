@@ -4,7 +4,7 @@ from typing import List
 import networkx as nx
 from matplotlib import pyplot as plt
 
-from core.common.helpers.graphs import topological_pos
+from core.common.helpers.graphs import topological_pos, default_dag_style
 from core.common.helpers.steps.IStep import IStep
 
 
@@ -26,13 +26,9 @@ class Workflow(ABC):
         raise NotImplementedError()
 
     def show_graph(self, style: dict = None) -> None:
-        default_style = {
-            "arrows": True,
-            "arrowsize": 30,
-            "bbox": dict(facecolor="skyblue",
-                         boxstyle="round", ec="silver", pad=0.3),
-            "edge_color": "gray"
-        }
-        style = style if style else default_style
-        nx.draw_networkx(self.graph, pos=topological_pos(self.graph), **style)
+        style = style if style else default_dag_style
+        ax1 = plt.subplot()
+        ax1.margins(0.15)
+        nx.draw_networkx(self.graph, ax=ax1,
+                         pos=topological_pos(self.graph), **style)
         plt.show()
