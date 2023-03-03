@@ -2,14 +2,14 @@ import logging
 import sys
 import time
 from functools import wraps
-from typing import List
 
 from core.common.helpers.logging.Logger import Logger
 
 
 class GarnetLogger(Logger):
-    def __init__(self, run_id: str, handlers: List = [], name: str = "GarnetLogger"):
+    def __init__(self, run_id: str, handlers=None, name: str = "GarnetLogger"):
         super().__init__(run_id)
+        handlers = handlers if handlers else []
         self.handlers = handlers
         self.__setup_logger()
         self.logger = logging.getLogger(name)

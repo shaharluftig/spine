@@ -4,6 +4,7 @@ from typing import List
 import networkx as nx
 from matplotlib import pyplot as plt
 
+from core.common.helpers.graphs import topological_pos
 from core.common.helpers.steps.IStep import IStep
 
 
@@ -25,7 +26,6 @@ class Workflow(ABC):
         raise NotImplementedError()
 
     def show_graph(self, style: dict = None) -> None:
-        # TODO : Export this style to config
         default_style = {
             "arrows": True,
             "arrowsize": 30,
@@ -34,5 +34,5 @@ class Workflow(ABC):
             "edge_color": "gray"
         }
         style = style if style else default_style
-        nx.draw_networkx(self.graph, **style)
+        nx.draw_networkx(self.graph, pos=topological_pos(self.graph), **style)
         plt.show()
