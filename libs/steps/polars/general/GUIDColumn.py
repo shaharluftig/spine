@@ -14,4 +14,4 @@ class GUIDColumn(PolarsStep):
 
     async def process(self, ctx: GarnetPolarsContext, df: PolarsDataFrame) -> PolarsDataFrame:
         ctx.logger.info(f"Creating GUID Coulmn ['{self.guid_column_name}'] using {self.column_to_hash}")
-        return df.with_columns([pl.col(*self.column_to_hash).hash().alias(self.guid_column_name)])
+        return df.with_columns([pl.concat_str(*self.column_to_hash).hash().alias(self.guid_column_name)])
