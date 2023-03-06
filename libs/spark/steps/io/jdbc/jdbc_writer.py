@@ -16,7 +16,7 @@ class JDBCWriter(SparkStep):
         self.connection_string = connection_string
 
     async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame) -> SparkDataFrame:
-        ctx.logger.info(f"Writing df to: {self.table_name} with connection string:{self.connection_string}")
+        ctx.logger.info(f"Writing df to table: {self.table_name} with connection string: {self.connection_string}")
         df.repartition(self.num_partitions)
         df.write.format("jdbc").mode(self.mode) \
             .option("url", self.connection_string) \
