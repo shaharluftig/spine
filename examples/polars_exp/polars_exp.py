@@ -5,31 +5,30 @@ from core.common.context import GarnetPolarsContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
-from libs.steps.polars.general.GUIDColumn import GUIDColumn
-from libs.steps.polars.io.console.console_writer import ConsoleWriter
-from libs.steps.polars.io.csv.csv_reader import CsvReader
-from libs.steps.polars.io.csv.csv_writer import CSVWriter
-from libs.steps.polars.io.sql.sql_reader import SQLReader
+from libs.polars.steps.general.GUIDColumn import GUIDColumn
+from libs.polars.steps.io.csv.csv_reader import CsvReader
+from libs.polars.steps.io.csv.csv_writer import CSVWriter
+from libs.polars.steps.io.sql.sql_writer import SQLWriter
 
 
 def __setup_steps():
     db_path = os.path.dirname(os.path.realpath("../polars_exp/db/exp.db"))
-    sqlite_conn = f"sqlite:{db_path}\\exp.db"
+    sqlite_conn = f"{db_path}\\exp.db"
     migrations_reader = CsvReader("../polars_exp/resources/migrations.csv", has_headers=True)
     migrations_parser = MigrationsParser()
-    users_reader = SQLReader("SELECT * FROM users", sqlite_conn)
     csv_writer = CSVWriter("./resources/output.csv")
     guid_column = GUIDColumn(["company", "year"], guid_column_name="guid")
-    return migrations_reader, migrations_parser, guid_column, users_reader, csv_writer
+    mssql_writer = SQLWriter("hello_polars", connection_string="sqlite:///" + sqlite_conn, if_exists="replace",
+                             engine="sqlalchemy")
+    return migrations_reader, migrations_parser, guid_column, csv_writer, mssql_writer
 
 
 def workflow_factory():
     workflow = DagWorkflow("PolarsExample")
-    migrations_reader, migrations_parser, guid_column, users_reader, csv_writer = __setup_steps()
+    migrations_reader, migrations_parser, guid_column, csv_writer, mssql_writer = __setup_steps()
     workflow.add_after([migrations_parser], [migrations_reader])
     workflow.add_after([guid_column], [migrations_parser])
-    workflow.add_after([ConsoleWriter()], [users_reader])
-    workflow.add_after([csv_writer, ConsoleWriter()], [guid_column])
+    workflow.add_after([csv_writer, mssql_writer], [guid_column])
     return workflow
 
 
