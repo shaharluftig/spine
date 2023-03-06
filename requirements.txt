@@ -2,6 +2,6 @@ matplotlib
 networkx
 pyspark
 pandas
-polars
+polars>=0.16.11
 pyarrow
-connectorx==0.3.2a2
+connectorx>=0.3.2a2
