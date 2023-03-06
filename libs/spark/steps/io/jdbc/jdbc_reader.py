@@ -15,7 +15,7 @@ class JDBCReader(SparkStep):
         self.query = query
 
     async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame = None) -> SparkDataFrame:
-        ctx.logger.info(f"Reading df using query: {self.query} with connection string:{self.connection_string}")
+        ctx.logger.info(f"Reading df using query: {self.query} with connection string: {self.connection_string}")
         df = ctx.spark.read.format("jdbc").option("driver", self.driver) \
             .option("url", self.connection_string) \
             .option("query", self.query) \
