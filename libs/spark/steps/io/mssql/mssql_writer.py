@@ -1,4 +1,4 @@
-from libs.steps.spark.io.jdbc.jdbc_writer import JDBCWriter
+from libs.spark.steps.io.jdbc.jdbc_writer import JDBCWriter
 
 
 class MSSQLWriter(JDBCWriter):

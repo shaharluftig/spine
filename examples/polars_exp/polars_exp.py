@@ -5,10 +5,10 @@ from core.common.context import GarnetPolarsContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
-from libs.steps.polars.general.GUIDColumn import GUIDColumn
-from libs.steps.polars.io.csv.csv_reader import CsvReader
-from libs.steps.polars.io.csv.csv_writer import CSVWriter
-from libs.steps.polars.io.sql.sql_writer import SQLWriter
+from libs.polars.steps.general.GUIDColumn import GUIDColumn
+from libs.polars.steps.io.csv.csv_reader import CsvReader
+from libs.polars.steps.io.csv.csv_writer import CSVWriter
+from libs.polars.steps.io.sql.sql_writer import SQLWriter
 
 
 def __setup_steps():

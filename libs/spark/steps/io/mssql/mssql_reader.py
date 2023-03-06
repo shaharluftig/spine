@@ -1,4 +1,4 @@
-from libs.steps.spark.io.jdbc.jdbc_reader import JDBCReader
+from libs.spark.steps.io.jdbc.jdbc_reader import JDBCReader
 
 
 class MSSQLReader(JDBCReader):
