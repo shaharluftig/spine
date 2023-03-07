@@ -1,8 +1,8 @@
 from typing import Union, Tuple
 
-from core.common.context.implementations.spark_context import GarnetSparkContext
-from core.common.helpers.dataframes import SparkDataFrame
-from core.common.helpers.steps.IStep import IStep
+from core.common.context.spark_context import GarnetSparkContext
+from core.common.helpers.dataframes.spark_dataframe import SparkDataFrame
+from core.common.helpers.contract.IStep import IStep
 
 
 class SparkStep(IStep):

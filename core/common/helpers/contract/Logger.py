@@ -1,4 +1,4 @@
-from core.common.helpers.singleton import Singleton
+from core.common.helpers.contract.metaclasses.singleton import Singleton
 
 
 class Logger(metaclass=Singleton):

@@ -1,7 +1,7 @@
 import asyncio
 import os
 
-from core.common.context import GarnetPolarsContext
+from core.common.context.polars_context import GarnetPolarsContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser

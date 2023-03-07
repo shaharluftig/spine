@@ -1,7 +1,7 @@
 from typing import Tuple
 
-from core.common.helpers.dataframes import SparkDataFrame
-from core.common.helpers.steps import SparkStep
+from core.common.helpers.dataframes.spark_dataframe import SparkDataFrame
+from core.common.helpers.steps.spark_step import SparkStep
 
 
 class ConsoleWriter(SparkStep):
