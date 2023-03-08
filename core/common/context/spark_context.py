@@ -1,7 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
 
-from core.common.context import BaseContext
+from core.common.context.base_context import BaseContext
 
 
 class GarnetSparkContext(BaseContext):
@@ -25,5 +25,8 @@ class GarnetSparkContext(BaseContext):
 
     @staticmethod
     def into_polars(lazy=True, config: dict = None):
-        from core.common.context.implementations.polars_context import GarnetPolarsContext
-        return GarnetPolarsContext(lazy, config)
+        try:
+            from core.common.context.polars_context import GarnetPolarsContext
+            return GarnetPolarsContext(lazy, config)
+        except ImportError:
+            raise ImportError("Polars must be installed in order to use PolarsSparkContext")

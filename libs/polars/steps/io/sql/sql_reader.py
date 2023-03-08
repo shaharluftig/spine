@@ -2,9 +2,9 @@ from typing import Literal
 
 import polars as pl
 
-from core.common.context import GarnetPolarsContext
-from core.common.helpers.dataframes import PolarsDataFrame
-from core.common.helpers.steps import PolarsStep
+from core.common.context.polars_context import GarnetPolarsContext
+from core.common.helpers.dataframes.polars_dataframe import PolarsDataFrame
+from core.common.helpers.steps.polars_step import PolarsStep
 
 
 class SQLReader(PolarsStep):
@@ -19,5 +19,7 @@ class SQLReader(PolarsStep):
 
     async def process(self, ctx: GarnetPolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
         ctx.logger.info(f"Querying: ({self.sql_query}) using: {self.connection_string}")
-        return pl.read_database(query=self.sql_query, connection_uri=self.connection_string,
-                                partition_on=self.partition_on, engine=self.engine)
+        df = pl.read_database(query=self.sql_query, connection_uri=self.connection_string,
+                              partition_on=self.partition_on,
+                              engine=self.engine)
+        return df.lazy() if ctx.lazy else df

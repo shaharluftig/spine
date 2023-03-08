@@ -1,2 +1,2 @@
 from core.executors.garnet_executor import execute
-from core.executors.workflow_executors.implementations.async_workflow_executor import AsyncWorkflowExecutor
+from core.executors.workflow_executors.async_workflow_executor import AsyncWorkflowExecutor

@@ -5,7 +5,7 @@ import networkx as nx
 from matplotlib import pyplot as plt
 
 from core.common.helpers.graphs import topological_pos, default_dag_style
-from core.common.helpers.steps.IStep import IStep
+from core.common.helpers.contract.IStep import IStep
 
 
 class Workflow(ABC):
