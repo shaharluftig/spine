@@ -1,8 +1,7 @@
-
 from core.common.context.base_context import BaseContext
 
 
-class GarnetPolarsContext(BaseContext):
+class SpinePolarsContext(BaseContext):
     def __init__(self, lazy: bool, config: dict):
         super().__init__()
         self.lazy = lazy
@@ -19,17 +18,17 @@ class GarnetPolarsContext(BaseContext):
 
     @staticmethod
     def get_context(lazy: bool = True, config: dict = None):
-        """Get or create GarnetPolars context"""
-        ctx = GarnetPolarsContext(lazy, config)
-        ctx.logger.info("Starting GarnetPolarsContext")
+        """Get or create SpinePolars context"""
+        ctx = SpinePolarsContext(lazy, config)
+        ctx.logger.info(f"Starting SpinePolarsContext with lazy_mode={lazy}")
         return ctx
 
     @staticmethod
     def into_spark(spark_config: dict = {}, spark_session=None):
-        """Converts GarnetPolarsContext to GarnetSparkContext"""
+        """Converts SpinePolarsContext to SpineSparkContext"""
         try:
             spark_config = {} if not spark_config else spark_config
-            from core.common.context.spark_context import GarnetSparkContext
-            return GarnetSparkContext(spark_session, spark_config)
+            from core.common.context.spark_context import SpineSparkContext
+            return SpineSparkContext(spark_session, spark_config)
         except ImportError:
-            raise ImportError("Pyspark must be installed in order to use GarnetSparkContext")
+            raise ImportError("Pyspark must be installed in order to use SpineSparkContext")

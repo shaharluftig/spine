@@ -1,4 +1,4 @@
-from core.common.context.spark_context import GarnetSparkContext
+from core.common.context.spark_context import SpineSparkContext
 from core.common.helpers.dataframes.spark_dataframe import SparkDataFrame
 from core.common.helpers.steps.spark_step import SparkStep
 
@@ -15,7 +15,7 @@ class JDBCWriter(SparkStep):
         self.username = username
         self.connection_string = connection_string
 
-    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame) -> SparkDataFrame:
+    async def process(self, ctx: SpineSparkContext, df: SparkDataFrame) -> SparkDataFrame:
         ctx.logger.info(f"Writing df to table: {self.table_name} with connection string: {self.connection_string}")
         df.repartition(self.num_partitions)
         df.write.format("jdbc").mode(self.mode) \

@@ -6,8 +6,8 @@ from functools import wraps
 from core.common.helpers.contract.Logger import Logger
 
 
-class GarnetLogger(Logger):
-    def __init__(self, run_id: str, handlers=None, name: str = "GarnetLogger"):
+class SpineLogger(Logger):
+    def __init__(self, run_id: str, handlers=None, name: str = "SpineLogger"):
         super().__init__(run_id)
         handlers = handlers if handlers else []
         self.handlers = handlers

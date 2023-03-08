@@ -2,19 +2,19 @@ import uuid
 from typing import List
 
 from core.common.helpers.contract.IContext import IContext
-from core.common.helpers.logging import GarnetLogger
+from core.common.helpers.logging import SpineLogger
 from core.common.helpers.contract import Logger
 from core.common.helpers.contract.metaclasses.singleton import Singleton
 
 
 class BaseContext(IContext, metaclass=Singleton):
-    def __init__(self, logger: Logger = GarnetLogger, log_handlers: List = []):
+    def __init__(self, logger: Logger = SpineLogger, log_handlers: List = []):
         self.run_id = str(uuid.uuid1()).lower()
-        self.__garnet_logger = logger(self.run_id, log_handlers)
-        self.logger = self.__garnet_logger.logger
+        self.__spine_logger = logger(self.run_id, log_handlers)
+        self.logger = self.__spine_logger.logger
 
-    def get_garnet_logger(self) -> GarnetLogger:
-        return self.__garnet_logger
+    def get_spine_logger(self) -> SpineLogger:
+        return self.__spine_logger
 
     @staticmethod
     def get_context(log_handlers: List = []):

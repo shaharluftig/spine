@@ -2,6 +2,6 @@
 sidebar_label: 'Libs'
 sidebar_position: 3
 ---
-# GarnetLibs
+# SpineLibs
 
 This is my **first Docusaurus document**!

@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Garnet',
-  tagline: 'Garnet library',
+  title: 'Spine',
+  tagline: 'Spine library',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -105,12 +105,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/shaharluftig/garnet2',
+                href: 'https://github.com/shaharluftig/spine2',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Garnet2, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Spine2, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

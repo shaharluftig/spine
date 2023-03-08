@@ -1,7 +1,7 @@
 import pyspark.sql.functions as F
 from pyspark.sql import Window
 
-from core.common.context.spark_context import GarnetSparkContext
+from core.common.context.spark_context import SpineSparkContext
 from core.common.helpers.dataframes.spark_dataframe import SparkDataFrame
 from core.common.helpers.steps.spark_step import SparkStep
 
@@ -25,7 +25,7 @@ class HiveWriter(SparkStep):
         self.num_partitions = num_partitions
         self.is_new_partitions = is_new_partitions
 
-    async def process(self, ctx: GarnetSparkContext, df: SparkDataFrame):
+    async def process(self, ctx: SpineSparkContext, df: SparkDataFrame):
         try:
             if self.overwrite_partition:
                 self._handle_partition_overwriting(ctx, df)
@@ -41,7 +41,7 @@ class HiveWriter(SparkStep):
 
         return df
 
-    def _handle_partition_overwriting(self, ctx: GarnetSparkContext, df: SparkDataFrame):
+    def _handle_partition_overwriting(self, ctx: SpineSparkContext, df: SparkDataFrame):
         self._validate_overwrite_partitions_params()
         ctx.spark.conf.set('spark.sql.sources.partitionOverwriteMode', 'dynamic')
         ctx = ctx.repartition(self.num_partitions)
