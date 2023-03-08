@@ -2,10 +2,9 @@ from abc import ABC
 from typing import List
 
 import networkx as nx
-from matplotlib import pyplot as plt
 
-from core.common.helpers.graphs import topological_pos, default_dag_style
 from core.common.helpers.contract.IStep import IStep
+from core.common.helpers.graphs import topological_pos, default_dag_style
 
 
 class Workflow(ABC):
@@ -26,9 +25,13 @@ class Workflow(ABC):
         raise NotImplementedError()
 
     def show_graph(self, style: dict = None) -> None:
-        style = style if style else default_dag_style
-        ax1 = plt.subplot()
-        ax1.margins(0.15)
-        nx.draw_networkx(self.graph, ax=ax1,
-                         pos=topological_pos(self.graph), **style)
-        plt.show()
+        try:
+            from matplotlib import pyplot as plt
+            style = style if style else default_dag_style
+            ax1 = plt.subplot()
+            ax1.margins(0.15)
+            nx.draw_networkx(self.graph, ax=ax1,
+                             pos=topological_pos(self.graph), **style)
+            plt.show()
+        except ImportError:
+            raise ImportError("matplotlib must be installed in order to show graph")
