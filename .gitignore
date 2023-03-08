@@ -130,3 +130,7 @@ dmypy.json
 
 # .idea
 .idea
+
+# spine
+/examples/polars_exp/resources/output.csv
+/examples/spark_exp/resources/output.csv
