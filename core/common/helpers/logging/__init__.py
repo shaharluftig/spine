@@ -1,1 +1,1 @@
-from core.common.helpers.logging.implementations.garnet_logger import GarnetLogger
+from core.common.helpers.logging.garnet_logger import GarnetLogger

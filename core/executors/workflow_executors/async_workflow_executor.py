@@ -1,16 +1,15 @@
 import asyncio
-from typing import List, Union, Tuple
+from typing import List
 
-from core.common.context import BaseContext
-from core.common.helpers.dataframes import DataFrame
-from core.common.helpers.steps.IStep import IStep
-from core.executors.workflow_executors.IExecutor import IExecutor
-from core.workflows.Workflow import Workflow
+from core.common.context.base_context import BaseContext
+from core.common.helpers.contract.IStep import IStep
+from core.common.helpers.contract.IExecutor import IExecutor
+from core.common.helpers.contract.Workflow import Workflow
 
 
 class AsyncWorkflowExecutor(IExecutor):
     @staticmethod
-    async def __execute_step(ctx: BaseContext, step: IStep, dependencies) -> Union[DataFrame, Tuple[DataFrame]]:
+    async def __execute_step(ctx: BaseContext, step: IStep, dependencies):
         result = ctx.get_garnet_logger().time_function(step.process, f"Step {step.__class__.__name__}")
         return await result(ctx, *dependencies)
 

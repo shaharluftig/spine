@@ -3,7 +3,7 @@ import sys
 import time
 from functools import wraps
 
-from core.common.helpers.logging.Logger import Logger
+from core.common.helpers.contract.Logger import Logger
 
 
 class GarnetLogger(Logger):

@@ -1,6 +1,6 @@
 import asyncio
 
-from core.common.context import GarnetSparkContext
+from core.common.context.spark_context import GarnetSparkContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from libs.spark.steps.io.console.console_writer import ConsoleWriter

@@ -1,9 +1,10 @@
 import uuid
 from typing import List
 
-from core.common.context.IContext import IContext
-from core.common.helpers.logging import Logger, GarnetLogger
-from core.common.helpers.singleton import Singleton
+from core.common.helpers.contract.IContext import IContext
+from core.common.helpers.logging import GarnetLogger
+from core.common.helpers.contract import Logger
+from core.common.helpers.contract.metaclasses.singleton import Singleton
 
 
 class BaseContext(IContext, metaclass=Singleton):

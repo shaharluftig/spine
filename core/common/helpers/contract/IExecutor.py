@@ -1,5 +1,5 @@
-from core.common.context import BaseContext
-from core.workflows.Workflow import Workflow
+from core.common.context.base_context import BaseContext
+from core.common.helpers.contract.Workflow import Workflow
 
 
 class IExecutor:

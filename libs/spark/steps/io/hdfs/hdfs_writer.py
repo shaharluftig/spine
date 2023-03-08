@@ -1,8 +1,8 @@
 from typing import Dict
 
-from core.common.context import GarnetSparkContext
-from core.common.helpers.dataframes import SparkDataFrame
-from core.common.helpers.steps import SparkStep
+from core.common.context.spark_context import GarnetSparkContext
+from core.common.helpers.dataframes.spark_dataframe import SparkDataFrame
+from core.common.helpers.steps.spark_step import SparkStep
 
 
 class HdfsWriter(SparkStep):
