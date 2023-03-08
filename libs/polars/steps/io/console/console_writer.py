@@ -2,7 +2,7 @@ from typing import Tuple
 
 from core.common.context.polars_context import GarnetPolarsContext
 from core.common.helpers.dataframes.polars_dataframe import PolarsDataFrame
-from core.common.helpers.steps import PolarsStep
+from core.common.helpers.steps.polars_step import PolarsStep
 
 
 class ConsoleWriter(PolarsStep):
