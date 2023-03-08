@@ -2,6 +2,6 @@
 sidebar_label: 'Core'
 sidebar_position: 2
 ---
-# GarnetLibs
+# SpineLibs
 
 lala **first Docusaurus document**!

@@ -1,1 +1,1 @@
-from core.common.helpers.logging.garnet_logger import GarnetLogger
+from core.common.helpers.logging.spine_logger import SpineLogger

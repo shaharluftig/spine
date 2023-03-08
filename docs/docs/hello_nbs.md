@@ -2,6 +2,6 @@
 sidebar_label: 'nbs'
 sidebar_position: 3
 ---
-# GarnetLibs
+# SpineLibs
 
 i love to eat

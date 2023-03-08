@@ -1,6 +1,6 @@
 from typing import Literal
 
-from core.common.context.polars_context import GarnetPolarsContext
+from core.common.context.polars_context import SpinePolarsContext
 from core.common.helpers.dataframes.polars_dataframe import PolarsDataFrame
 from core.common.helpers.steps.polars_step import PolarsStep
 
@@ -28,7 +28,7 @@ class SQLWriter(PolarsStep):
         self.engine = engine
         self.if_exists = if_exists
 
-    async def process(self, ctx: GarnetPolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
+    async def process(self, ctx: SpinePolarsContext, df: PolarsDataFrame = None) -> PolarsDataFrame:
         ctx.logger.info(f"Writing to table: {self.table_name} using: {self.connection_string}]")
         df = df.collect() if ctx.lazy else df
         df.write_database(self.table_name, self.connection_string, if_exists=self.if_exists, engine=self.engine)

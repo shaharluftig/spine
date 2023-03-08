@@ -1,6 +1,6 @@
 import asyncio
 
-from core.common.context.spark_context import GarnetSparkContext
+from core.common.context.spark_context import SpineSparkContext
 from core.executors import execute
 from core.workflows import DagWorkflow
 from libs.spark.steps.io.console.console_writer import ConsoleWriter
@@ -24,7 +24,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = GarnetSparkContext.get_context(spark_config={"spark.executor.memory": "1gb"})  # Example config
+    ctx = SpineSparkContext.get_context(spark_config={"spark.executor.memory": "1gb"})  # Example config
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
