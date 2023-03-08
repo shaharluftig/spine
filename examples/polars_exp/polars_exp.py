@@ -1,15 +1,15 @@
 import asyncio
 import os
 
-from core.common.context.polars_context import SpinePolarsContext
-from core.executors import execute
-from core.workflows import DagWorkflow
+from spinecore.common.context.polars_context import SpinePolarsContext
+from spinecore.executors import execute
+from spinecore.workflows import DagWorkflow
 from examples.polars_exp.steps.migrations_parser import MigrationsParser
-from libs.polars.steps.general.GUIDColumn import GUIDColumn
-from libs.polars.steps.io.console.console_writer import ConsoleWriter
-from libs.polars.steps.io.csv.csv_reader import CsvReader
-from libs.polars.steps.io.csv.csv_writer import CSVWriter
-from libs.polars.steps.io.sql.sql_reader import SQLReader
+from spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
+from spinelibs.polars.steps.io.console.console_writer import ConsoleWriter
+from spinelibs.polars.steps.io.csv.csv_reader import CsvReader
+from spinelibs.polars.steps.io.csv.csv_writer import CSVWriter
+from spinelibs.polars.steps.io.sql.sql_reader import SQLReader
 
 
 def __setup_steps():
