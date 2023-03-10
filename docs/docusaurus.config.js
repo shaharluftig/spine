@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Spine',
-  tagline: 'Spine library',
+  tagline: 'Spine: the backbone of your data pipeline',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -64,7 +64,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Spine',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -105,7 +105,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/shaharluftig/spine2',
+                href: 'https://github.com/shaharluftig/spine',
               },
             ],
           },

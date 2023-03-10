@@ -2,6 +2,6 @@
 sidebar_label: 'Core'
 sidebar_position: 2
 ---
-# SpineLibs
+# spinecore
 
 lala **first Docusaurus document**!
