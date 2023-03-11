@@ -8,6 +8,8 @@ from spinecore.common.helpers.contract.metaclasses.singleton import Singleton
 
 
 class BaseContext(IContext, metaclass=Singleton):
+    """Base spine context"""
+
     def __init__(self, logger: Logger = SpineLogger, log_handlers: List = []):
         self.run_id = str(uuid.uuid1()).lower()
         self.__spine_logger = logger(self.run_id, log_handlers)

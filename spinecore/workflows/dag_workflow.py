@@ -7,6 +7,7 @@ from spinecore.common.helpers.contract.Workflow import Workflow
 
 
 class DagWorkflow(Workflow):
+    """DAG (Directed Acyclic Graph) Implementation of Workflow"""
 
     def __init__(self, workflow_name: str):
         super().__init__(workflow_name, graph=nx.DiGraph())

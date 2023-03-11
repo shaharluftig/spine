@@ -18,6 +18,7 @@ class SpineSparkContext(BaseContext):
 
     @staticmethod
     def get_context(spark_config=None, spark_session: SparkSession = None):
+        """Get or create SpineSparkContext"""
         spark_config = {} if not spark_config else spark_config
         ctx = SpineSparkContext(spark_session, spark_config)
         ctx.logger.info("Starting SpineSparkContext")
@@ -25,6 +26,7 @@ class SpineSparkContext(BaseContext):
 
     @staticmethod
     def into_polars(lazy=True, config: dict = None):
+        """Convert SpineSparkContext to SpinePolarsContext"""
         try:
             from spinecore.common.context.polars_context import SpinePolarsContext
             return SpinePolarsContext(lazy, config)

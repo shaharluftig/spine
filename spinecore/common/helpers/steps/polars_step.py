@@ -6,6 +6,8 @@ from spinecore.common.helpers.contract.IStep import IStep
 
 
 class PolarsStep(IStep):
+    """IStep implementation for polars steps"""
+
     async def process(self, ctx: SpinePolarsContext, df: Union[PolarsDataFrame, Tuple[PolarsDataFrame]]) \
             -> Union[PolarsDataFrame, Tuple[PolarsDataFrame]]:
         raise NotImplementedError
