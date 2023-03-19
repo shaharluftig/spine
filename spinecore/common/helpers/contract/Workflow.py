@@ -27,11 +27,10 @@ class Workflow(ABC):
     def show_graph(self, style: dict = None) -> None:
         try:
             from matplotlib import pyplot as plt
+            from matplotlib import rcParams
+            rcParams.update({'figure.autolayout': True})
             style = style if style else default_dag_style
-            ax1 = plt.subplot()
-            ax1.margins(0.15)
-            nx.draw_networkx(self.graph, ax=ax1,
-                             pos=topological_pos(self.graph), **style)
+            nx.draw_networkx(self.graph, pos=topological_pos(self.graph), **style)
             plt.show()
         except ImportError:
             raise ImportError("matplotlib must be installed in order to show graph")

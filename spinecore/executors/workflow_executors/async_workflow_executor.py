@@ -2,12 +2,14 @@ import asyncio
 from typing import List
 
 from spinecore.common.context.base_context import BaseContext
-from spinecore.common.helpers.contract.IStep import IStep
 from spinecore.common.helpers.contract.IExecutor import IExecutor
+from spinecore.common.helpers.contract.IStep import IStep
 from spinecore.common.helpers.contract.Workflow import Workflow
 
 
 class AsyncWorkflowExecutor(IExecutor):
+    """Async implementation of workflow executor"""
+
     @staticmethod
     async def __execute_step(ctx: BaseContext, step: IStep, dependencies):
         result = ctx.get_spine_logger().time_function(step.process, f"Step {step.__class__.__name__}")
