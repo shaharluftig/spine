@@ -1,6 +1,5 @@
 import pkg_resources
 import pytest
-from pyspark.sql.types import Row
 
 from spinecore.common.context.spark_context import SpineSparkContext
 from spinecore.executors import execute
@@ -29,16 +28,13 @@ async def test_spark_e2e():
     # Prepare
     ctx = SpineSparkContext.get_context()
     workflow, last_step = workflow_factory()
+    expected_df = ctx.spark.read.csv(pkg_resources.resource_filename(__name__, "./resources/expected_data.csv"),
+                                     header=True)
 
     # Action
     result: dict = await execute(ctx, workflow)
 
     # Assert
-    df = result.get(last_step).collect()
+    df = result.get(last_step)
 
-    data = [Row("shahar", 23, "israel"),
-            Row("josef", 55, "israel"),
-            Row("sang", 55, "china")]
-    expected_df = ctx.spark.createDataFrame(data=data, schema=["name", "age", "country"])
-
-    assert sorted(df) == sorted(expected_df)
+    assert sorted(df.collect()) == sorted(expected_df.collect())
