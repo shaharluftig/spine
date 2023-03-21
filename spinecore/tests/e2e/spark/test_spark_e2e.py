@@ -27,14 +27,14 @@ def workflow_factory():
 async def test_spark_e2e():
     # Prepare
     ctx = SpineSparkContext.get_context()
+    ctx.logger.info("Running Spark E2E Test")
     workflow, last_step = workflow_factory()
     expected_df = ctx.spark.read.csv(pkg_resources.resource_filename(__name__, "./resources/expected_data.csv"),
                                      header=True)
 
     # Action
     result: dict = await execute(ctx, workflow)
-
-    # Assert
     df = result.get(last_step)
 
+    # Assert
     assert sorted(df.collect()) == sorted(expected_df.collect())
