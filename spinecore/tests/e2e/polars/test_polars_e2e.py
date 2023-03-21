@@ -31,16 +31,17 @@ def workflow_factory():
 @pytest.mark.asyncio
 async def test_polars_e2e():
     # Prepare
-    ctx = SpinePolarsContext.get_context(lazy=True)
-    workflow, last_step = workflow_factory()
-
-    # Action
-    result: dict = await execute(ctx, workflow)
-
-    # Assert
-    df = result.get(last_step).collect()
     expected_df = pl.from_dicts([{'name': 'shahar', 'age': 23, 'country': 'israel', 'guid': '7768553422548966964'},
                                  {'name': 'josef', 'age': 55, 'country': 'israel', 'guid': '4412959094999199270'},
                                  {'name': 'sang', 'age': 55, 'country': 'china', 'guid': '14666928701774118983'}])
 
+    ctx = SpinePolarsContext.get_context(lazy=True)
+    ctx.logger.info("Running Polars E2E Test")
+    workflow, last_step = workflow_factory()
+
+    # Action
+    result: dict = await execute(ctx, workflow)
+    df = result.get(last_step).collect()
+
+    # Assert
     assert_frame_equal(df, expected_df)
