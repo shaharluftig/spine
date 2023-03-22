@@ -1,4 +1,4 @@
-from spinelibs.spark.steps.io.jdbc.jdbc_writer import JDBCWriter
+from spinelibs.spinelibs.spark.steps.io.jdbc.jdbc_writer import JDBCWriter
 
 
 class MSSQLWriter(JDBCWriter):

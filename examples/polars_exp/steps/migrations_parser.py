@@ -5,7 +5,7 @@ from spinecore.common.helpers.dataframes.polars_dataframe import PolarsDataFrame
 from spinecore.common.helpers.steps.polars_step import PolarsStep
 
 
-class MigrationsParser(PolarsStep):
+class   MigrationsParser(PolarsStep):
     """Example for custom step"""
 
     async def process(self, ctx: SpinePolarsContext, df: PolarsDataFrame) -> PolarsDataFrame:

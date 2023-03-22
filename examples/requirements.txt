@@ -1,0 +1,2 @@
+spinecore[all]
+spinelibs[all]
