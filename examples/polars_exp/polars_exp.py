@@ -1,10 +1,10 @@
 import asyncio
 import os
 
+from steps.migrations_parser import MigrationsParser
 from spinecore.common.context.polars_context import SpinePolarsContext
 from spinecore.executors import execute
 from spinecore.workflows import DagWorkflow
-from examples.polars_exp.steps.migrations_parser import MigrationsParser
 from spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
 from spinelibs.polars.steps.io.console.console_writer import ConsoleWriter
 from spinelibs.polars.steps.io.csv.csv_reader import CsvReader

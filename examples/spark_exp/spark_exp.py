@@ -3,8 +3,8 @@ import asyncio
 from spinecore.common.context.spark_context import SpineSparkContext
 from spinecore.executors import execute
 from spinecore.workflows import DagWorkflow
-from spinelibs.spark.steps.io.console.console_writer import ConsoleWriter
-from spinelibs.spark.steps.io.csv.csv_reader import CsvReader
+from spinelibs.spinelibs.spark.steps.io.console.console_writer import ConsoleWriter
+from spinelibs.spinelibs.spark.steps.io.csv.csv_reader import CsvReader
 
 
 def __setup_steps():

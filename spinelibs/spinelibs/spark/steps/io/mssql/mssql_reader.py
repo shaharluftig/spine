@@ -1,4 +1,4 @@
-from spinelibs.spark.steps.io.jdbc.jdbc_reader import JDBCReader
+from spinelibs.spinelibs.spark.steps.io.jdbc.jdbc_reader import JDBCReader
 
 
 class MSSQLReader(JDBCReader):

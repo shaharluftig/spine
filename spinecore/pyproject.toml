@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spinecore"
+description = "The core lib of spine library"
+readme = "README.md"
+version = "0.0.1"
+
+authors = [
+    { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+
+keywords = ["dataframe", "dag", "core", "spine", "workflow", "data pipline", "data enginnering"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+
+dependencies = [
+    "stringcase ~=1.2.0",
+    "matplotlib",
+    "networkx ~=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest ~=7.2.2",
+    "pytest-asyncio ~=0.20.3"
+]
+
+polars = ["polars >=0.16.11",
+    "pyarrow",
+    "connectorx >=0.3.2a2"]
+
+spark = ["pyspark ~=3.2.1"]
+
+all = ["polars >=0.16.11",
+    "pyarrow", "pyspark ~=3.2.1",
+    "connectorx >=0.3.2a2"]
+
+[project.urls]
+"Homepage" = "https://github.com/shaharluftig/spine"
