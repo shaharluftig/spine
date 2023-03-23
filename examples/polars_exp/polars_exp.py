@@ -1,7 +1,6 @@
 import asyncio
 import os
 
-from steps.migrations_parser import MigrationsParser
 from spinecore.common.context.polars_context import SpinePolarsContext
 from spinecore.executors import execute
 from spinecore.workflows import DagWorkflow
@@ -10,6 +9,8 @@ from spinelibs.polars.steps.io.console.console_writer import ConsoleWriter
 from spinelibs.polars.steps.io.csv.csv_reader import CsvReader
 from spinelibs.polars.steps.io.csv.csv_writer import CSVWriter
 from spinelibs.polars.steps.io.sql.sql_reader import SQLReader
+
+from steps.migrations_parser import MigrationsParser
 
 
 def __setup_steps():

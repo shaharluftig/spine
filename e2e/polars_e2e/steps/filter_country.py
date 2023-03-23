@@ -1,7 +1,6 @@
 from typing import Union, Tuple, List
 
 import polars as pl
-
 from spinecore.common.context.polars_context import SpinePolarsContext
 from spinecore.common.helpers.dataframes.polars_dataframe import PolarsDataFrame
 from spinecore.common.helpers.steps.polars_step import PolarsStep
