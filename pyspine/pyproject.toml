@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "spinecore"
-description = "The core lib of spine library"
+name = "pyspine"
+description = "Spine: The backbone of your project"
+
 readme = "README.md"
 version = "0.0.12"
-
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
 ]
@@ -30,15 +30,19 @@ classifiers = [
 ]
 
 dependencies = [
-    "stringcase ~=1.2.0",
-    "matplotlib ~=3.7.1",
-    "networkx ~=3.0",
+    "spinecore",
+    "spinelibs"
 ]
 
 [project.optional-dependencies]
-polars = ["polars ~=0.16.11", "pyarrow ~=11.0.0", "connectorx ~=0.3.2a2"]
-spark = ["pyspark ~=3.2.1"]
-all = ["spinecore[polars]", "spinecore[spark]"]
+dev = [
+    "pytest ~=7.2.2",
+    "pytest-asyncio ~=0.20.3",
+    "spinecore[all]", "spinelibs[all]"
+]
+polars = ["spinecore[polars]", "spinelibs[polars]"]
+spark = ["spinecore[spark]", "spinelibs[spark]"]
+all = ["spinecore[spark]", "spinelibs[spark]", "spinecore[polars]", "spinelibs[polars]"]
 
 [project.urls]
 "Homepage" = "https://github.com/shaharluftig/spine"
