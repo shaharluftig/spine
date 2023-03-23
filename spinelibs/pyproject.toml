@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spinelibs"
-description = "Libs for spine projectt"
+description = "Libs for spine project"
 
 readme = "README.md"
 version = "0.0.12"
