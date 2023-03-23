@@ -7,7 +7,7 @@ from spinecore.workflows import DagWorkflow
 from spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
 from spinelibs.polars.steps.io.csv.csv_reader import CsvReader
 
-from e2e.polars.steps.filter_country import FilterCountry
+from polars.steps.filter_country import FilterCountry
 
 
 def __setup_steps():
