@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "spinecore"
 description = "The core lib of spine library"
 readme = "README.md"
-version = "0.0.12"
+version = "0.0.13"
 
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
