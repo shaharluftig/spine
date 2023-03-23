@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "spinelibs"
-description = "Libs for spine project"
+name = "pyspine"
+description = "Spine: The backbone of your project"
 
 readme = "README.md"
 version = "0.0.12"
@@ -14,7 +14,7 @@ authors = [
 license = { file = "LICENSE" }
 requires-python = ">=3.7"
 
-keywords = ["dataframe", "dag", "core"]
+keywords = ["dataframe", "dag", "core", "spine", "workflow", "data pipline", "data enginnering"]
 classifiers = [
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
@@ -30,13 +30,19 @@ classifiers = [
 ]
 
 dependencies = [
-    "spinecore"
+    "spinecore",
+    "spinelibs"
 ]
 
 [project.optional-dependencies]
-polars = ["spinecore[polars]"]
-spark = ["spinecore[spark]"]
-all = ["spinecore[spark]", "spinecore[polars]"]
+dev = [
+    "pytest ~=7.2.2",
+    "pytest-asyncio ~=0.20.3",
+    "spinecore[all]", "spinelibs[all]"
+]
+polars = ["spinecore[polars]", "spinelibs[polars]"]
+spark = ["spinecore[spark]", "spinelibs[spark]"]
+all = ["spinecore[spark]", "spinelibs[spark]", "spinecore[polars]", "spinelibs[polars]"]
 
 [project.urls]
 "Homepage" = "https://github.com/shaharluftig/spine"
