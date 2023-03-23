@@ -1,4 +1,5 @@
 import pkg_resources
+import polars as pl
 import pytest
 from spinecore.common.context.polars_context import SpinePolarsContext
 from spinecore.executors import execute
@@ -6,7 +7,6 @@ from spinecore.workflows import DagWorkflow
 from spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
 from spinelibs.polars.steps.io.csv.csv_reader import CsvReader
 
-import polars as pl
 from .steps.filter_country import FilterCountry
 
 
