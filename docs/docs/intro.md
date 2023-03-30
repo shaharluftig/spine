@@ -10,7 +10,9 @@ Spine is an open-source project library that helps you create production-grade E
 
 ### Context:
 
-* `Context` is where Spine starts. Every context has…
+* `Context` is the entry point into Spine.
+* inherits from the abstract class `BaseContext`
+* Includes execution engine, run_id, logger, and more.
 * There are multiply implementations of SpineContext, such as `SpineSparkContext`, and `SpinePolarsContext`
 
 ### Step:
@@ -22,8 +24,9 @@ Spine is an open-source project library that helps you create production-grade E
 
 ### Workflow:
 
-* `Workflow` represents the flow of the pipeline. Every workflow inherits from the abstract class Workflow.
-  Every workflow contains multiple `Steps`.
+* `Workflow` represents the flow of the pipeline.
+* Inherits from the abstract class `Workflow`.
+* Contains multiple `Steps`.
 * Currently, there is one implementation of the executor - `DagWorkflow`.
 
 ### Executor
