@@ -30,8 +30,9 @@ class AsyncWorkflowExecutor(IExecutor):
     async def __execute_all_steps(self, ctx: BaseContext, workflow: Workflow) -> dict:
         steps_results = {}
         flat_graph = workflow.flat_graph()
-        await asyncio.gather(*[self.__execute_step_by_dependencies(ctx, workflow, steps_results, step)
-                               for step in flat_graph])
+        await asyncio.gather(
+            *[asyncio.create_task(self.__execute_step_by_dependencies(ctx, workflow, steps_results, step))
+              for step in flat_graph])
         return steps_results
 
     async def execute(self, ctx: BaseContext, workflow: Workflow) -> dict:

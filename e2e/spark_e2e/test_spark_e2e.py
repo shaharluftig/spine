@@ -1,9 +1,9 @@
 import pkg_resources
 import pytest
-from spinecore.common.context.spark_context import SpineSparkContext
-from spinecore.executors import execute
-from spinecore.workflows import DagWorkflow
-from spinelibs.spark.steps.io.csv.csv_reader import CsvReader
+from core.spinecore.common.context.spark_context import SpineSparkContext
+from core.spinecore.executors import execute
+from core.spinecore.workflows import DagWorkflow
+from libs.spinelibs.spark.steps.io.csv.csv_reader import CsvReader
 
 from .steps.filter_country import FilterCountry
 
