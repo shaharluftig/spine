@@ -66,7 +66,7 @@ const config = {
       navbar: {
         title: 'Spine',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Spine Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -97,7 +97,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Spine2, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Spine, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

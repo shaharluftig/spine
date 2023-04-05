@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
     {
         title: 'Easy to Use',
-        Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+        Svg: require('@site/static/img/workflow.svg').default,
         description: (
             <>
                 Spine was designed from the ground up to be easily installed and
@@ -15,7 +15,7 @@ const FeatureList = [
     },
     {
         title: 'Focus on What Matters',
-        Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+        Svg: require('@site/static/img/ml.svg').default,
         description: (
             <>
                 Spine lets you focus on your business logic, we will handle all the flow of your pipelines.
@@ -24,7 +24,7 @@ const FeatureList = [
     },
     {
         title: 'Production ready',
-        Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+        Svg: require('@site/static/img/fight.svg').default,
         description: (
             <>
                 There are 60+ data pipelines that are running with Spine
