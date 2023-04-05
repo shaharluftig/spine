@@ -1,13 +1,13 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "spinelibs"
 description = "Libs for spine project"
 
 readme = "README.md"
-version = "0.0.12"
+version = "0.0.14"
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
 ]

@@ -1,11 +1,11 @@
 import pkg_resources
 import pytest
-from core.spinecore.common.context.spark_context import SpineSparkContext
-from core.spinecore.executors import execute
-from core.spinecore.workflows import DagWorkflow
-from libs.spinelibs.spark.steps.io.csv.csv_reader import CsvReader
 
-from .steps.filter_country import FilterCountry
+from spinecore.common.context.spark_context import SpineSparkContext
+from spinecore.executors import execute
+from spinecore.workflows import DagWorkflow
+from e2e.spark_e2e.steps.filter_country import FilterCountry
+from spinelibs.spark.steps.io.csv.csv_reader import CsvReader
 
 
 def __setup_steps():
@@ -34,7 +34,7 @@ async def test_spark_e2e():
 
     # Action
     result: dict = await execute(ctx, workflow)
-    df = result.get(last_step)
+    df = result[0].get(last_step)
 
     # Assert
     assert sorted(df.collect()) == sorted(expected_df.collect())

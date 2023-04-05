@@ -2,12 +2,13 @@ import pkg_resources
 import polars as pl
 import pytest
 
-from core.spinecore.common.context.polars_context import SpinePolarsContext
-from core.spinecore.executors import execute
-from core.spinecore.workflows import DagWorkflow
-from libs.spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
-from libs.spinelibs.polars.steps.io.csv.csv_reader import CsvReader
-from .steps.filter_country import FilterCountry
+from spinecore.common.context.polars_context import SpinePolarsContext
+from spinecore.executors import execute
+from spinecore.workflows import DagWorkflow
+from spinelibs.polars.steps.general.GUIDColumn import GUIDColumn
+from spinelibs.polars.steps.io.csv.csv_reader import CsvReader
+
+from e2e.polars_e2e.steps.filter_country import FilterCountry
 
 
 def __setup_steps():
@@ -40,7 +41,7 @@ async def test_polars_e2e():
 
     # Action
     result: dict = await execute(ctx, workflow)
-    df = result.get(last_step).collect()
+    df = result[0].get(last_step).collect()
 
     # Assert
     assert df.frame_equal(expected_df)
