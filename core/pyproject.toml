@@ -7,7 +7,7 @@ build-backend = "hatchling.build"
 name = "spinecore"
 description = "The core lib of spine library"
 readme = "README.md"
-version = "0.0.16"
+version = "0.0.18"
 
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
@@ -39,7 +39,8 @@ dependencies = [
 [project.optional-dependencies]
 polars = ["polars ~=0.17.0", "pyarrow ~=11.0.0", "connectorx ~=0.3.2a2"]
 spark = ["pyspark ~=3.2.1"]
-all = ["spinecore[polars]", "spinecore[spark]"]
+pandas = ["pandas ~=2.0.0"]
+all = ["spinecore[polars]", "spinecore[spark]", "spinecore[pandas]"]
 
 [project.urls]
 "Homepage" = "https://github.com/shaharluftig/spine"

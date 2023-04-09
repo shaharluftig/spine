@@ -7,7 +7,7 @@ name = "spinelibs"
 description = "Libs for spine project"
 
 readme = "README.md"
-version = "0.0.15"
+version = "0.0.16"
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },
 ]
@@ -36,7 +36,8 @@ dependencies = [
 [project.optional-dependencies]
 polars = ["spinecore[polars]"]
 spark = ["spinecore[spark]"]
-all = ["spinecore[spark]", "spinecore[polars]"]
+pandas = ["spinecore[pandas]"]
+all = ["spinecore[spark]", "spinecore[polars]", "spinecore[pandas]"]
 
 [project.urls]
 "Homepage" = "https://github.com/shaharluftig/spine"
