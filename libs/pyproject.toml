@@ -41,3 +41,6 @@ all = ["spinecore[spark]", "spinecore[polars]", "spinecore[pandas]"]
 
 [project.urls]
 "Homepage" = "https://github.com/shaharluftig/spine"
+
+[tool.ruff]
+ignore = ["E501","F401"]
