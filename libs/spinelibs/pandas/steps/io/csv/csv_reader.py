@@ -14,9 +14,8 @@ class CsvReader(PandasStep):
         self.lazy = lazy
         self.path = path
 
-    async def process(self, ctx: SpinePandasContext, df: Union[PandasDataFrame, Tuple[PandasDataFrame]] = None) -> \
-    Union[
-        PandasDataFrame, Tuple[PandasDataFrame]]:
+    async def process(self, ctx: SpinePandasContext, df: Union[PandasDataFrame, Tuple[PandasDataFrame]] = None) \
+            -> Union[PandasDataFrame, Tuple[PandasDataFrame]]:
         ctx.logger.info(f"Reading {self.path} with headers={self.headers}")
         df = pd.read_csv(self.path, header=self.headers)
         return df

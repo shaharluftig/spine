@@ -1,4 +1,4 @@
-from typing import Literal, Union, Tuple
+from typing import Union, Tuple
 
 import pandas as pd
 from spinecore.common.context.pandas_context import SpinePandasContext
@@ -13,7 +13,7 @@ class SQLReader(PandasStep):
         self.sql_query = sql_query
         self.connection = connection
 
-    async def process(self, ctx: SpinePandasContext, df: Union[PandasDataFrame, Tuple[PandasDataFrame]]=None)\
+    async def process(self, ctx: SpinePandasContext, df: Union[PandasDataFrame, Tuple[PandasDataFrame]] = None) \
             -> Union[PandasDataFrame, Tuple[PandasDataFrame]]:
         ctx.logger.info(f"Querying: ({self.sql_query})")
         return pd.read_sql(self.sql_query, self.connection)
