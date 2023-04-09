@@ -43,4 +43,6 @@ all = ["spinecore[spark]", "spinecore[polars]", "spinecore[pandas]"]
 "Homepage" = "https://github.com/shaharluftig/spine"
 
 [tool.ruff]
-ignore = ["E501","F401"]
+ignore = ["E501"]
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
