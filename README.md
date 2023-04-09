@@ -69,15 +69,15 @@ if __name__ == '__main__':
 ##### For more examples, head to  https://spine-docs.vercel.app/docs/intro
 
 ### Building
-* Clone the repo
-* pip install pyspine[all]
-* pip install pyspine[dev]
-* start hacking
+* `git clone https://github.com/shaharluftig/spine.git` 
+* `pip install pyspine[all]`
+* `pip install pyspine[dev]`
+* Start hacking!
 
 ### Testing
-* pytest .
+* `pytest .`
 
-```
+
 License
 ----
 
