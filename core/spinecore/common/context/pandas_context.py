@@ -18,7 +18,7 @@ class SpinePandasContext(BaseContext):
     def get_context(config: dict = None):
         """Get or create SpinePandasContext"""
         ctx = SpinePandasContext(config)
-        ctx.logger.info(f"Starting SpinePandasContext")
+        ctx.logger.info("Starting SpinePandasContext")
         return ctx
 
     @staticmethod
