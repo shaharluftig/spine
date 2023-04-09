@@ -7,7 +7,6 @@ class SpinePandasContext(BaseContext):
         self.__setup_config(config)
 
     @staticmethod
-    @staticmethod
     def __setup_config(config: dict):
         """Sets pandas config from dict"""
         if config:
@@ -16,7 +15,7 @@ class SpinePandasContext(BaseContext):
                 pd.set_option(key, value)
 
     @staticmethod
-    def get_context(lazy: bool = True, config: dict = None):
+    def get_context(config: dict = None):
         """Get or create SpinePandasContext"""
         ctx = SpinePandasContext(config)
         ctx.logger.info(f"Starting SpinePandasContext")
@@ -24,7 +23,7 @@ class SpinePandasContext(BaseContext):
 
     @staticmethod
     def into_spark(spark_config: dict = {}, spark_session=None):
-        """Converts SpinePolarsContext to SpineSparkContext"""
+        """Converts SpinePandasContext to SpineSparkContext"""
         try:
             spark_config = {} if not spark_config else spark_config
             from spinecore.common.context.spark_context import SpineSparkContext

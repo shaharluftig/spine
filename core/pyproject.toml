@@ -7,7 +7,7 @@ build-backend = "hatchling.build"
 name = "spinecore"
 description = "The core lib of spine library"
 readme = "README.md"
-version = "0.0.17"
+version = "0.0.18"
 
 authors = [
     { name = "Shahar Luftig", email = "shaharluftig@gmail.com" },

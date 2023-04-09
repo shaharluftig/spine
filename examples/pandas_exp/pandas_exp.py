@@ -14,10 +14,9 @@ from steps.migrations_parser import MigrationsParser
 
 def __setup_steps():
     db_path = os.path.dirname(os.path.realpath("../polars_exp/db/exp.db"))
-    sqlite_path = f"{db_path}\\exp.db"
-    sqlite_con = sqlite3.connect(sqlite_path)
+    sqlite_con = sqlite3.connect(f"{db_path}\\exp.db")
     names_reader = SQLReader("select * FROM names", sqlite_con)
-    migrations_reader = CsvReader("../polars_exp/resources/migrations.csv", )
+    migrations_reader = CsvReader("../pandas_exp/resources/migrations.csv", )
     migrations_parser = MigrationsParser()
     csv_writer = CSVWriter("./resources/output.csv")
     return migrations_reader, migrations_parser, names_reader, csv_writer
@@ -33,7 +32,7 @@ def workflow_factory():
 
 
 async def main():
-    ctx = SpinePandasContext.get_context()
+    ctx = SpinePandasContext.get_context(config={"display.max_rows": 999})
     workflow = workflow_factory()
     await execute(ctx, workflow)
 
