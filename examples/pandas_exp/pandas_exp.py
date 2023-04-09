@@ -5,10 +5,10 @@ import sqlite3
 from core.spinecore.common.context.pandas_context import SpinePandasContext
 from core.spinecore.executors.spine_executor import execute
 from core.spinecore.workflows.dag_workflow import DagWorkflow
-from libs.spinelibs.pandas.steps.io.console.console_writer import ConsoleWriter
-from libs.spinelibs.pandas.steps.io.csv.csv_reader import CsvReader
-from libs.spinelibs.pandas.steps.io.csv.csv_writer import CSVWriter
-from libs.spinelibs.pandas.steps.io.sql.sql_reader import SQLReader
+from spinelibs.pandas.steps.io.console.console_writer import ConsoleWriter
+from spinelibs.pandas.steps.io.csv.csv_reader import CsvReader
+from spinelibs.pandas.steps.io.csv.csv_writer import CSVWriter
+from spinelibs.pandas.steps.io.sql.sql_reader import SQLReader
 from steps.migrations_parser import MigrationsParser
 
 
