@@ -10,7 +10,9 @@ from spinecore.common.helpers.graphs import topological_pos, default_dag_style
 class DagWorkflow(Workflow):
     """DAG (Directed Acyclic Graph) Implementation of Workflow"""
 
-    def __init__(self, workflow_name: str, graph=nx.DiGraph()):
+    def __init__(self, workflow_name: str, graph: nx.DiGraph = None):
+        if not graph:
+            graph = nx.DiGraph(name=workflow_name)
         super().__init__(workflow_name, graph=graph)
 
     def add_after(self, next_steps: List[IStep], prev_step: List[IStep]) -> None:
