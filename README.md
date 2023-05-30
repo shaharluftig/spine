@@ -77,6 +77,8 @@ if __name__ == '__main__':
 ### Testing
 * `pytest .`
 
+### Linting
+* `ruff .`
 
 License
 ----
