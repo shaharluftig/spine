@@ -2,8 +2,8 @@ matplotlib
 networkx~=3.0
 pyspark~=3.2.1
 pandas~=1.5.3
-polars>=0.16.11
-pyarrow
+polars~=0.20.2
+pyarrow~=14.0.1
 connectorx>=0.3.2a2
 pytest~=7.2.2
 pytest-asyncio
